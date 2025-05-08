@@ -1,5 +1,0 @@
-package sollecitom.libs.swissknife.messaging.domain.message.consumer
-
-import sollecitom.libs.swissknife.messaging.domain.partitioning.PartitionAssignmentChangesAware
-
-interface PartitionAssignmentChangesAwareMessageConsumer<out VALUE> : MessageConsumer<VALUE>, PartitionAssignmentChangesAware

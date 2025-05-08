@@ -1,9 +1,0 @@
-{
-  "type": "enum",
-  "namespace": "acme.common.time",
-  "name": "TimestampFormat",
-  "symbols": [
-    "ISO_8601"
-  ],
-  "default": "ISO_8601"
-}

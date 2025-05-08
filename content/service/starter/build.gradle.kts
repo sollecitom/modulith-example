@@ -40,7 +40,9 @@ configure<JibDockerBuildConvention.Extension> {
     dockerBaseImage = dockerBaseImageParam
     reproducibleBuild = true
     volumes = listOf(tmpVolume)
-    tags = listOf(gitVersion.gitHashFull)
+    gitVersion.gitHashFull?.let {
+        tags = listOf(it)
+    }
     args = listOf(
         "-Djava.security.egd=file:/dev/./urandom"
     )

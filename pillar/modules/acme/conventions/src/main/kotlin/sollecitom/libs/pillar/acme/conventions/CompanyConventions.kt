@@ -1,3 +1,0 @@
-package sollecitom.libs.pillar.acme.conventions
-
-interface CompanyConventions : MonitoringConventions, LoggingConventions, ContainerBasedTestConventions, MessagingConventions, LocaleConventions, HttpApiConventions

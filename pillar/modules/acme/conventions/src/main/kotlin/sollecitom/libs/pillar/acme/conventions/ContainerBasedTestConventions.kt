@@ -1,3 +1,0 @@
-package sollecitom.libs.pillar.acme.conventions
-
-interface ContainerBasedTestConventions
