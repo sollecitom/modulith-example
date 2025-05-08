@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "namespace": "acme.common.event",
+  "name": "HappeningType",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "version",
+      "type": "int"
+    }
+  ]
+}

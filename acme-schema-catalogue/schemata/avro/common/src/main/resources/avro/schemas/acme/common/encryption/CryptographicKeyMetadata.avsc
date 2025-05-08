@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "namespace": "acme.common.encryption",
+  "name": "CryptographicKeyMetadata",
+  "fields": [
+    {
+      "name": "algorithm",
+      "type": "string"
+    },
+    {
+      "name": "format",
+      "type": "string"
+    },
+    {
+      "name": "hash",
+      "type": "long"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "customer"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/json/schemas/acme/common/identity/Id.json"
+    },
+    "customer": {
+      "$ref": "/json/schemas/acme/common/correlation/customer/Customer.json"
+    }
+  }
+}

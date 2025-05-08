@@ -1,0 +1,40 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.context",
+  "name": "InvocationContext",
+  "fields": [
+    {
+      "name": "access",
+      "type": "acme.common.correlation.access.Access"
+    },
+    {
+      "name": "trace",
+      "type": "acme.common.correlation.trace.Trace"
+    },
+    {
+      "name": "toggles",
+      "type": "acme.common.correlation.toggles.Toggles"
+    },
+    {
+      "name": "specified_locale",
+      "type": [
+        "null",
+        "acme.common.locale.Locale"
+      ]
+    },
+    {
+      "name": "specified_target_customer",
+      "type": [
+        "null",
+        "acme.common.correlation.customer.Customer"
+      ]
+    },
+    {
+      "name": "specified_target_tenant",
+      "type": [
+        "null",
+        "acme.common.correlation.tenant.Tenant"
+      ]
+    }
+  ]
+}

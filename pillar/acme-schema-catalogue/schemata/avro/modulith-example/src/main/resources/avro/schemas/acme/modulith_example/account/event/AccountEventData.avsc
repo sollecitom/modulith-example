@@ -1,0 +1,22 @@
+{
+  "namespace": "acme.modulith_example.account.event",
+  "name": "AccountEventData",
+  "type": "record",
+  "fields": [
+    {
+      "name": "envelope_type",
+      "type": "string"
+    },
+    {
+      "name": "envelope",
+      "type": [
+        "acme.modulith_example.account.event.Deposit",
+        "acme.modulith_example.account.event.SendPaymentCommandReceived",
+        "acme.modulith_example.account.event.SendPaymentCommandReceived_InsufficientBalanceError",
+        "acme.modulith_example.account.event.SendPaymentCommandReceived_AccountNotFoundError",
+        "acme.modulith_example.account.event.OutboundPayment",
+        "acme.modulith_example.account.event.InboundPayment"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "enum",
+  "namespace": "acme.common.entity",
+  "name": "EntityReferenceType",
+  "symbols": [
+    "BY_VALUE",
+    "BY_ID_AND_CUSTOMER"
+  ]
+}

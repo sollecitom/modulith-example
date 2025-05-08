@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.access",
+  "name": "AuthenticatedAccess",
+  "fields": [
+    {
+      "name": "actor",
+      "type": "acme.common.correlation.access.actor.Actor"
+    },
+    {
+      "name": "origin",
+      "type": "acme.common.correlation.access.origin.Origin"
+    },
+    {
+      "name": "authorization",
+      "type": "acme.common.correlation.access.authorization.AuthorizationPrincipal"
+    },
+    {
+      "name": "scope",
+      "type": "acme.common.correlation.access.scope.AccessScope"
+    }
+  ]
+}

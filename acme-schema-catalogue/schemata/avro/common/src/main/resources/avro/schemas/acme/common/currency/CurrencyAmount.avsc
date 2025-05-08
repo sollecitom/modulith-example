@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "namespace": "acme.common.currency",
+  "name": "CurrencyAmount",
+  "fields": [
+    {
+      "name": "units",
+      "type": "string"
+    },
+    {
+      "name": "currency",
+      "type": "acme.common.currency.Currency"
+    }
+  ]
+}

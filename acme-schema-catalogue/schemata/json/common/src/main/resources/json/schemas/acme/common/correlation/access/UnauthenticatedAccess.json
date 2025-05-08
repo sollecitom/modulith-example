@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "type",
+    "origin",
+    "authorization",
+    "scope",
+    "is-test"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "unauthenticated"
+      ]
+    },
+    "origin": {
+      "$ref": "/json/schemas/acme/common/correlation/access/origin/Origin.json"
+    },
+    "authorization": {
+      "$ref": "/json/schemas/acme/common/correlation/access/authorization/AuthorizationPrincipal.json"
+    },
+    "scope": {
+      "$ref": "/json/schemas/acme/common/correlation/access/scope/AccessScope.json"
+    },
+    "is-test": {
+      "type": "boolean"
+    }
+  }
+}

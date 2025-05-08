@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "namespace": "acme.common.time",
+  "name": "Timestamp",
+  "fields": [
+    {
+      "name": "value",
+      "type": "string"
+    },
+    {
+      "name": "format",
+      "type": "acme.common.time.TimestampFormat"
+    }
+  ]
+}

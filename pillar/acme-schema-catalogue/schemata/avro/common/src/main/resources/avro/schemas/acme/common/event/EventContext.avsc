@@ -1,0 +1,25 @@
+{
+  "type": "record",
+  "namespace": "acme.common.event",
+  "name": "EventContext",
+  "fields": [
+    {
+      "name": "invocation",
+      "type": "acme.common.correlation.context.InvocationContext"
+    },
+    {
+      "name": "parent",
+      "type": [
+        "null",
+        "acme.common.event.EventReference"
+      ]
+    },
+    {
+      "name": "originating",
+      "type": [
+        "null",
+        "acme.common.event.EventReference"
+      ]
+    }
+  ]
+}

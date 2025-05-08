@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "device",
+    "operating-system",
+    "layout-engine",
+    "agent"
+  ],
+  "properties": {
+    "device": {
+      "$ref": "/json/schemas/acme/common/correlation/access/origin/client/info/device/Device.json"
+    },
+    "operating-system": {
+      "$ref": "/json/schemas/acme/common/correlation/access/origin/client/info/operating-system/OperatingSystem.json"
+    },
+    "layout-engine": {
+      "$ref": "/json/schemas/acme/common/correlation/access/origin/client/info/layout-engine/LayoutEngine.json"
+    },
+    "agent": {
+      "$ref": "/json/schemas/acme/common/correlation/access/origin/client/info/agent/Agent.json"
+    }
+  }
+}

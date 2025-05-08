@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.access.actor",
+  "name": "ImpersonatingActor",
+  "fields": [
+    {
+      "name": "impersonator",
+      "type": "acme.common.correlation.access.actor.Account"
+    },
+    {
+      "name": "impersonated",
+      "type": "acme.common.correlation.access.actor.Account"
+    },
+    {
+      "name": "authentication",
+      "type": "acme.common.correlation.access.authentication.Authentication"
+    }
+  ]
+}

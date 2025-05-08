@@ -1,0 +1,19 @@
+{
+  "type": "enum",
+  "namespace": "acme.common.time",
+  "name": "Month",
+  "symbols": [
+    "JANUARY",
+    "FEBRUARY",
+    "MARCH",
+    "APRIL",
+    "MAY",
+    "JUNE",
+    "JULY",
+    "AUGUST",
+    "SEPTEMBER",
+    "OCTOBER",
+    "NOVEMBER",
+    "DECEMBER"
+  ]
+}

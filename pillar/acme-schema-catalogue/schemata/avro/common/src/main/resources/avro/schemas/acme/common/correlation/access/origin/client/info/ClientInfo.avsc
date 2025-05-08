@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.access.origin.client.info",
+  "name": "ClientInfo",
+  "fields": [
+    {
+      "name": "device",
+      "type": "acme.common.correlation.access.origin.client.info.Device"
+    },
+    {
+      "name": "operating_system",
+      "type": "acme.common.correlation.access.origin.client.info.OperatingSystem"
+    },
+    {
+      "name": "layout_engine",
+      "type": "acme.common.correlation.access.origin.client.info.LayoutEngine"
+    },
+    {
+      "name": "agent",
+      "type": "acme.common.correlation.access.origin.client.info.Agent"
+    }
+  ]
+}

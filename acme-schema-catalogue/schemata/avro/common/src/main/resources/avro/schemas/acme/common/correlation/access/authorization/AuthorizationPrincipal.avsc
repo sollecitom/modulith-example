@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.access.authorization",
+  "name": "AuthorizationPrincipal",
+  "fields": [
+    {
+      "name": "roles",
+      "type": "acme.common.correlation.access.authorization.Roles"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "namespace": "acme.common.time",
+  "name": "MonthAndYear",
+  "fields": [
+    {
+      "name": "month",
+      "type": "acme.common.time.Month"
+    },
+    {
+      "name": "year",
+      "type": "int"
+    }
+  ]
+}

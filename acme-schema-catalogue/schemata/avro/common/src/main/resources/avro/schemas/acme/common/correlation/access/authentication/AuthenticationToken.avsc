@@ -1,0 +1,25 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.access.authentication",
+  "name": "AuthenticationToken",
+  "fields": [
+    {
+      "name": "id",
+      "type": "acme.common.identity.Id"
+    },
+    {
+      "name": "valid_from",
+      "type": [
+        "null",
+        "acme.common.time.Timestamp"
+      ]
+    },
+    {
+      "name": "valid_to",
+      "type": [
+        "null",
+        "acme.common.time.Timestamp"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "month",
+    "year"
+  ],
+  "properties": {
+    "month": {
+      "type": "string",
+      "enum": [
+        "JANUARY",
+        "FEBRUARY",
+        "MARCH",
+        "APRIL",
+        "MAY",
+        "JUNE",
+        "JULY",
+        "AUGUST",
+        "SEPTEMBER",
+        "OCTOBER",
+        "NOVEMBER",
+        "DECEMBER"
+      ]
+    },
+    "year": {
+      "type": "integer"
+    }
+  }
+}

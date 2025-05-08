@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "namespace": "acme.modulith_example.account.event",
+  "name": "SendPaymentCommandReceived_InsufficientBalanceError",
+  "fields": [
+    {
+      "name": "attempt",
+      "type": "acme.modulith_example.account.event.SendPaymentCommandReceived"
+    }
+  ]
+}

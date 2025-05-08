@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.trace",
+  "name": "InvocationTrace",
+  "fields": [
+    {
+      "name": "id",
+      "type": "acme.common.identity.Id"
+    },
+    {
+      "name": "created_at",
+      "type": "acme.common.time.Timestamp"
+    }
+  ]
+}

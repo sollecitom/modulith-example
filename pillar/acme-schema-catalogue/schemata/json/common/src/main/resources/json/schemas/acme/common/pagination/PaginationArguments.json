@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "limit"
+  ],
+  "properties": {
+    "limit": {
+      "type": "integer"
+    },
+    "continuation-token": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

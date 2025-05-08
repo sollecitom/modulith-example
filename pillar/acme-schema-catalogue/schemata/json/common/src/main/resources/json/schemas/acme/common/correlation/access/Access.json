@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "/json/schemas/acme/common/correlation/access/AuthenticatedAccess.json"
+    },
+    {
+      "$ref": "/json/schemas/acme/common/correlation/access/UnauthenticatedAccess.json"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+dependencies {
+    api(projects.modulithExampleModulesDepositEventEndpointApplicationModel)
+    api(projects.pillarWebApiUtils)
+    api(projects.pillarJsonSerializationDdd)
+
+    implementation(projects.modulithExampleModulesDepositEventEndpointAdaptersDrivingHttpSerializationJson)
+    implementation(projects.acmeSchemaCatalogueJsonCommon)
+    implementation(projects.pillarJsonSerializationCorrelationCore)
+    implementation(projects.swissknifeLensCoreExtensions)
+    implementation(projects.swissknifeJsonUtils)
+    implementation(projects.swissknifeConfigurationUtils)
+    implementation(projects.swissknifeLoggingStandardSlf4jConfiguration)
+    implementation(projects.swissknifeKotlinExtensions)
+    implementation(projects.pillarJsonSerializationWebApi)
+    implementation(projects.pillarJsonSerializationPagination)
+
+    testImplementation(projects.modulithExampleModulesDepositEventEndpointDomainTestUtils)
+    testImplementation(projects.pillarJsonSerializationTestUtils)
+    testImplementation(projects.swissknifeDddTestUtils)
+    testImplementation(projects.swissknifeTestUtils)
+    testImplementation(projects.pillarWebApiTestUtils)
+    testImplementation(projects.swissknifeOpenapiCheckingTestUtils)
+    testImplementation(projects.swissknifeCorrelationCoreTestUtils)
+    testImplementation(projects.pillarCorrelationLoggingTestUtils)
+    testImplementation(projects.swissknifeResourceUtils)
+    testImplementation(projects.swissknifeOpenapiValidationHttp4kTestUtils)
+    testImplementation(projects.swissknifePaginationTestUtils)
+}

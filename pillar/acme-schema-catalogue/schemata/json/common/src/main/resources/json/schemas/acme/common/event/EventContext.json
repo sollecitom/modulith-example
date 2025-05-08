@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "invocation"
+  ],
+  "properties": {
+    "invocation": {
+      "$ref": "/json/schemas/acme/common/correlation/context/InvocationContext.json"
+    },
+    "parent": {
+      "$ref": "/json/schemas/acme/common/event/EventReference.json"
+    },
+    "originating": {
+      "$ref": "/json/schemas/acme/common/event/EventReference.json"
+    }
+  }
+}

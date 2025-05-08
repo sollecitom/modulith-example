@@ -1,0 +1,12 @@
+{
+  "type": "enum",
+  "namespace": "acme.common.identity",
+  "name": "IdType",
+  "symbols": [
+    "STRING",
+    "ULID",
+    "UUID",
+    "KSUID"
+  ],
+  "default": "STRING"
+}

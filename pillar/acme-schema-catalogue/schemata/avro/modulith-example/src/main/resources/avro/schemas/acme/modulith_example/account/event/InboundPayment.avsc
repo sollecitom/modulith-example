@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "namespace": "acme.modulith_example.account.event",
+  "name": "InboundPayment",
+  "fields": [
+    {
+      "name": "source_account",
+      "type": "acme.modulith_example.account.AccountReference"
+    },
+    {
+      "name": "target_account",
+      "type": "acme.modulith_example.account.AccountReference"
+    },
+    {
+      "name": "amount",
+      "type": "acme.common.currency.CurrencyAmount"
+    }
+  ]
+}

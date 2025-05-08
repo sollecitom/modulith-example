@@ -1,0 +1,26 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.access.actor",
+  "name": "UserAccount",
+  "fields": [
+    {
+      "name": "id",
+      "type": "acme.common.identity.Id"
+    },
+    {
+      "name": "locale",
+      "type": [
+        "null",
+        "acme.common.locale.Locale"
+      ]
+    },
+    {
+      "name": "customer",
+      "type": "acme.common.correlation.customer.Customer"
+    },
+    {
+      "name": "tenant",
+      "type": "acme.common.correlation.tenant.Tenant"
+    }
+  ]
+}

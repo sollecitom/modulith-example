@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.toggles",
+  "name": "IntegerToggleValue",
+  "fields": [
+    {
+      "name": "id",
+      "type": "acme.common.identity.Id"
+    },
+    {
+      "name": "value",
+      "type": "long"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "total-items-count"
+  ],
+  "properties": {
+    "total-items-count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "continuation-token": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

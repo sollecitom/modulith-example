@@ -1,0 +1,20 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.toggles",
+  "name": "ToggleValue",
+  "fields": [
+    {
+      "name": "envelope_type",
+      "type": "string"
+    },
+    {
+      "name": "envelope",
+      "type": [
+        "acme.common.correlation.toggles.BooleanToggleValue",
+        "acme.common.correlation.toggles.IntegerToggleValue",
+        "acme.common.correlation.toggles.DecimalToggleValue",
+        "acme.common.correlation.toggles.EnumToggleValue"
+      ]
+    }
+  ]
+}

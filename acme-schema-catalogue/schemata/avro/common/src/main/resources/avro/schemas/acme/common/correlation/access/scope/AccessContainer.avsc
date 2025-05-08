@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.access.scope",
+  "name": "AccessContainer",
+  "fields": [
+    {
+      "name": "id",
+      "type": "acme.common.identity.Id"
+    }
+  ]
+}

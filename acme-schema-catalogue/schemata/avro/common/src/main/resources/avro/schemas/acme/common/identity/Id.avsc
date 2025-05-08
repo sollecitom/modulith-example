@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "namespace": "acme.common.identity",
+  "name": "Id",
+  "fields": [
+    {
+      "name": "type",
+      "type": "acme.common.identity.IdType"
+    },
+    {
+      "name": "value",
+      "type": "string"
+    }
+  ]
+}

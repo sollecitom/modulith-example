@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "namespace": "acme.common.protected.value",
+  "name": "ProtectedString",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "owner",
+      "type": "acme.common.identity.Id"
+    },
+    {
+      "name": "value_hex",
+      "type": "string"
+    },
+    {
+      "name": "metadata",
+      "type": "acme.common.encryption.CtrEncryptionMetadata"
+    }
+  ]
+}

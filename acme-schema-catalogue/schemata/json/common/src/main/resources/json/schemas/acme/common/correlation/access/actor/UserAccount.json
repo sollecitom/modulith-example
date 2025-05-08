@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "type",
+    "id",
+    "customer",
+    "tenant"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "user"
+      ]
+    },
+    "id": {
+      "$ref": "/json/schemas/acme/common/identity/Id.json"
+    },
+    "locale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "customer": {
+      "$ref": "/json/schemas/acme/common/correlation/customer/Customer.json"
+    },
+    "tenant": {
+      "$ref": "/json/schemas/acme/common/correlation/tenant/Tenant.json"
+    }
+  }
+}

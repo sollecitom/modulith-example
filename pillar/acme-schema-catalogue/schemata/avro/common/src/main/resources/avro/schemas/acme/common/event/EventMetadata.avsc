@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "namespace": "acme.common.event",
+  "name": "EventMetadata",
+  "fields": [
+    {
+      "name": "id",
+      "type": "acme.common.identity.Id"
+    },
+    {
+      "name": "timestamp",
+      "type": "acme.common.time.Timestamp"
+    },
+    {
+      "name": "context",
+      "type": "acme.common.event.EventContext"
+    }
+  ]
+}

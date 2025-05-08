@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.access.authorization",
+  "name": "Roles",
+  "fields": [
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "acme.common.correlation.access.authorization.Role"
+      }
+    }
+  ]
+}

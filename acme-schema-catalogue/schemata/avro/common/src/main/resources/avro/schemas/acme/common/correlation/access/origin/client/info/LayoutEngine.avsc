@@ -1,0 +1,28 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.access.origin.client.info",
+  "name": "LayoutEngine",
+  "fields": [
+    {
+      "name": "class_name",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "name",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "version",
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  ]
+}

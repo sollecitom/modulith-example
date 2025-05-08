@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "invocation",
+    "parent",
+    "originating",
+    "external"
+  ],
+  "properties": {
+    "invocation": {
+      "$ref": "/json/schemas/acme/common/correlation/trace/InvocationTrace.json"
+    },
+    "parent": {
+      "$ref": "/json/schemas/acme/common/correlation/trace/InvocationTrace.json"
+    },
+    "originating": {
+      "$ref": "/json/schemas/acme/common/correlation/trace/InvocationTrace.json"
+    },
+    "external": {
+      "$ref": "/json/schemas/acme/common/correlation/trace/ExternalInvocationTrace.json"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "enum",
+  "namespace": "acme.common.currency",
+  "name": "Currency",
+  "symbols": [
+    "GBP",
+    "USD",
+    "EUR",
+    "JPY"
+  ]
+}

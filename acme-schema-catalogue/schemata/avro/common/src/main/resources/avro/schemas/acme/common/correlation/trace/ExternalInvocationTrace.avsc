@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.trace",
+  "name": "ExternalInvocationTrace",
+  "fields": [
+    {
+      "name": "invocation_id",
+      "type": "acme.common.identity.Id"
+    },
+    {
+      "name": "action_id",
+      "type": "acme.common.identity.Id"
+    }
+  ]
+}

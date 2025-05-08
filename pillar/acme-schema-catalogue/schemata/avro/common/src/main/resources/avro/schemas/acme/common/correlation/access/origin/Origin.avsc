@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.access.origin",
+  "name": "Origin",
+  "fields": [
+    {
+      "name": "ip_address",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "client_info",
+      "type": "acme.common.correlation.access.origin.client.info.ClientInfo"
+    }
+  ]
+}

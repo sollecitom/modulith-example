@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "type",
+    "format",
+    "bytes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "inline"
+      ]
+    },
+    "bytes": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "CSV",
+        "PDF"
+      ]
+    }
+  }
+}

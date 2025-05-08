@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.access",
+  "name": "Access",
+  "fields": [
+    {
+      "name": "envelope_type",
+      "type": "string"
+    },
+    {
+      "name": "envelope",
+      "type": [
+        "acme.common.correlation.access.AuthenticatedAccess",
+        "acme.common.correlation.access.UnauthenticatedAccess"
+      ]
+    }
+  ]
+}

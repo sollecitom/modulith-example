@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.access.actor",
+  "name": "ActorOnBehalf",
+  "fields": [
+    {
+      "name": "account",
+      "type": "acme.common.correlation.access.actor.Account"
+    },
+    {
+      "name": "benefiting_account",
+      "type": "acme.common.correlation.access.actor.Account"
+    },
+    {
+      "name": "authentication",
+      "type": "acme.common.correlation.access.authentication.Authentication"
+    }
+  ]
+}

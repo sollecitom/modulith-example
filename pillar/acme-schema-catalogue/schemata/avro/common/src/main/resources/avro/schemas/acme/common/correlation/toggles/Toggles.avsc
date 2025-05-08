@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.toggles",
+  "name": "Toggles",
+  "fields": [
+    {
+      "name": "values",
+      "type": {
+        "type": "array",
+        "items": "acme.common.correlation.toggles.ToggleValue"
+      }
+    }
+  ]
+}

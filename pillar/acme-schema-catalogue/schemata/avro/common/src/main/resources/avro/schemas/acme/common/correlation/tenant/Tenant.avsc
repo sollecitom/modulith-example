@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "namespace": "acme.common.correlation.tenant",
+  "name": "Tenant",
+  "fields": [
+    {
+      "name": "id",
+      "type": "acme.common.identity.Id"
+    }
+  ]
+}
