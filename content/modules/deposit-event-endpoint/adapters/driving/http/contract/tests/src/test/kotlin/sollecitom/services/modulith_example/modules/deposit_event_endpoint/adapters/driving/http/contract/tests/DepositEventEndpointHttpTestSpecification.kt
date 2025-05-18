@@ -105,7 +105,7 @@ interface DepositEventEndpointHttpTestSpecification : ErrorsEndpointHttpTestSpec
     context(time: TimeGenerator, definition: HttpApiDefinition)
     private fun api(
         meterRegistry: MeterRegistry = SimpleMeterRegistry(), application: PublishDepositEvent = PublishDepositEvent { ApplicationResult.Successful }
-    ) = httpDrivingAdapter(meterRegistry, object : Application by application {
+    ) = httpDrivingAdapter(meterRegistry, object : Application, PublishDepositEvent by application {
 
         context(_: InvocationContext<*>)
         override suspend fun publishDepositEvent(arguments: PublishDepositEvent.Arguments): ApplicationResult = application.publishDepositEvent(arguments)
