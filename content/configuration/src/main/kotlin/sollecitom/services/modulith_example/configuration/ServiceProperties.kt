@@ -1,4 +1,4 @@
-package sollecitom.services.example.configuration
+package sollecitom.services.modulith_example.configuration
 
 import sollecitom.libs.swissknife.configuration.utils.instanceGroupName
 import sollecitom.libs.swissknife.configuration.utils.instanceNodeName
