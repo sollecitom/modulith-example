@@ -1,10 +1,10 @@
 dependencies {
-    api(projects.modulithExampleSharedAccountDomainModel)
-    api(projects.swissknifeCoreUtils)
-    api(projects.swissknifeCorrelationCoreTestUtils)
-    api(projects.swissknifeDddTestUtils)
-    api(projects.swissknifeTestUtils)
+    api(projects.sharedAccountDomainModel)
+    api(libs.swissknife.core.utils)
+    api(libs.swissknife.correlation.core.test.utils)
+    api(libs.swissknife.ddd.test.utils)
+    api(libs.swissknife.test.utils)
 
-    implementation(projects.swissknifeLoggerCore)
-    implementation(projects.swissknifeConfigurationUtils)
+    implementation(libs.swissknife.logger.core)
+    implementation(libs.swissknife.configuration.utils)
 }

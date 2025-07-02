@@ -1,3 +1,3 @@
 dependencies {
-    api(projects.modulithExampleSharedNatsAdapter)
+    api(projects.sharedNatsAdapter)
 }

@@ -1,8 +1,8 @@
 dependencies {
-    api(projects.modulithExampleModulesPaymentCommandEndpointDomainModel)
-    api(projects.modulithExampleSharedAccountDomainTestUtils)
-    api(projects.swissknifeTestUtils)
-    api(projects.swissknifeCorrelationCoreTestUtils)
-    api(projects.swissknifeCoreTestUtils)
-    api(projects.swissknifeDddTestUtils)
+    api(projects.modulesPaymentCommandEndpointDomainModel)
+    api(projects.sharedAccountDomainTestUtils)
+    api(libs.swissknife.test.utils)
+    api(libs.swissknife.correlation.core.test.utils)
+    api(libs.swissknife.core.test.utils)
+    api(libs.swissknife.ddd.test.utils)
 }

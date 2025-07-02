@@ -1,14 +1,14 @@
 dependencies {
-    api(projects.modulithExampleSharedAccountDomainModel)
-    api(projects.swissknifeCoreDomain)
-    api(projects.swissknifeCorrelationCoreDomain)
-    api(projects.swissknifeDddDomain)
+    api(projects.sharedAccountDomainModel)
+    api(libs.swissknife.core.domain)
+    api(libs.swissknife.correlation.core.domain)
+    api(libs.swissknife.ddd.domain)
 
-    implementation(projects.swissknifeKotlinExtensions)
-    implementation(projects.swissknifeCoreUtils)
+    implementation(libs.swissknife.kotlin.extensions)
+    implementation(libs.swissknife.core.utils)
 
-    testImplementation(projects.modulithExampleSharedAccountDomainTestUtils)
-    testImplementation(projects.swissknifeTestUtils)
-    testImplementation(projects.swissknifeCoreTestUtils)
-    testImplementation(projects.swissknifeDddTestUtils)
+    testImplementation(projects.sharedAccountDomainTestUtils)
+    testImplementation(libs.swissknife.test.utils)
+    testImplementation(libs.swissknife.core.test.utils)
+    testImplementation(libs.swissknife.ddd.test.utils)
 }

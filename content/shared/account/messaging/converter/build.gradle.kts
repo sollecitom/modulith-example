@@ -1,9 +1,9 @@
 dependencies {
-    api(projects.modulithExampleSharedAccountDomainModel)
-    api(projects.modulithExampleSharedAccountSerializationAvro)
-    api(projects.modulithExampleSharedMessagingTopics)
-    api(projects.swissknifeMessagingDomain)
+    api(projects.sharedAccountDomainModel)
+    api(projects.sharedAccountSerializationAvro)
+    api(projects.sharedMessagingTopics)
+    api(libs.swissknife.messaging.domain)
 
-    implementation(projects.modulithExampleSharedSerializationAvro)
-    implementation(projects.pillarMessagingConventions)
+    implementation(projects.sharedSerializationAvro)
+    implementation(libs.pillar.messaging.conventions)
 }

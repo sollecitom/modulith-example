@@ -2,25 +2,25 @@ import com.palantir.gradle.gitversion.VersionDetails
 import sollecitom.plugins.conventions.task.jib.JibDockerBuildConvention
 
 dependencies {
-    api(projects.modulithExampleConfiguration)
-    api(projects.swissknifeWebServiceDomain)
-    api(projects.modulithExampleContractsHttp)
-    api(projects.pillarMessagingConventions)
+    api(projects.configuration)
+    api(libs.swissknife.web.service.domain)
+    api(projects.contractsHttp)
+    api(libs.pillar.messaging.conventions)
 
-    implementation(projects.pillarAcmeBusinessDomain)
-    implementation(projects.modulithExampleConfiguration)
-    implementation(projects.pillarServiceLogging)
-    implementation(projects.pillarPrometheusMicrometerRegistry)
-    implementation(projects.swissknifeWebOpenapiUtils)
-    implementation(projects.swissknifeSqlPostgresUtils)
-    implementation(projects.swissknifePulsarUtils)
-    implementation(projects.swissknifeKotlinExtensions)
-    implementation(projects.pillarWebApiUtils)
-    implementation(projects.swissknifeOpentelemetryCore)
-    implementation(projects.swissknifeOpentelemetryExporterOltp)
+    implementation(libs.pillar.acme.business.domain)
+    implementation(projects.configuration)
+    implementation(libs.pillar.service.logging)
+    implementation(libs.pillar.prometheus.micrometer.registry)
+    implementation(libs.swissknife.web.openapi.utils)
+    implementation(libs.swissknife.sql.postgres.utils)
+    implementation(libs.swissknife.pulsar.utils)
+    implementation(libs.swissknife.kotlin.extensions)
+    implementation(libs.pillar.web.api.utils)
+    implementation(libs.swissknife.opentelemetry.core)
+    implementation(libs.swissknife.opentelemetry.exporter.oltp)
 
-    implementation(projects.modulithExampleModulesDepositEventEndpointModuleImplementation)
-    implementation(projects.modulithExampleModulesPaymentCommandEndpointModuleImplementation)
+    implementation(projects.modulesDepositEventEndpointModuleImplementation)
+    implementation(projects.modulesPaymentCommandEndpointModuleImplementation)
 }
 
 apply<JibDockerBuildConvention>()

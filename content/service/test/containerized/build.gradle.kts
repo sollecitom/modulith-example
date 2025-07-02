@@ -3,16 +3,16 @@ import sollecitom.plugins.conventions.task.container.test.containerBasedServiceT
 
 apply<ContainerBasedServiceTestConvention>()
 configure<ContainerBasedServiceTestConvention.Extension> {
-    starterModuleName = projects.modulithExampleServiceStarter.name
+    starterModuleName = projects.serviceStarter.name
 }
 
 dependencies {
-    containerBasedServiceTestImplementation(projects.modulithExampleServiceTestSpecification)
-    containerBasedServiceTestImplementation(projects.modulithExampleServiceStarter)
-    containerBasedServiceTestImplementation(projects.modulithExampleConfiguration)
-    containerBasedServiceTestImplementation(projects.swissknifeTestContainersUtils)
-    containerBasedServiceTestImplementation(projects.swissknifeCoreTestUtils)
-    containerBasedServiceTestImplementation(projects.pillarAcmeBusinessDomain)
-    containerBasedServiceTestImplementation(projects.pillarMessagingConventions)
-    containerBasedServiceTestImplementation(projects.pillarWebApiTestUtils)
+    containerBasedServiceTestImplementation(projects.serviceTestSpecification)
+    containerBasedServiceTestImplementation(projects.serviceStarter)
+    containerBasedServiceTestImplementation(projects.configuration)
+    containerBasedServiceTestImplementation(libs.swissknife.test.containers.utils)
+    containerBasedServiceTestImplementation(libs.swissknife.core.test.utils)
+    containerBasedServiceTestImplementation(libs.pillar.acme.business.domain)
+    containerBasedServiceTestImplementation(libs.pillar.messaging.conventions)
+    containerBasedServiceTestImplementation(libs.pillar.web.api.test.utils)
 }

@@ -1,7 +1,5 @@
 rootProject.name = "modulith-example"
 
-includeBuild("../gradle-plugins")
-
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {

@@ -1,11 +1,11 @@
 dependencies {
-    api(projects.swissknifeServiceDomain)
-    api(projects.swissknifePulsarUtils)
+    api(libs.swissknife.service.domain)
+    api(libs.swissknife.pulsar.utils)
 
-    implementation(projects.modulithExampleModulesPaymentCommandEndpointAdaptersDrivingHttpEndpoint)
-    implementation(projects.modulithExampleModulesPaymentCommandEndpointAdaptersDrivenPulsar)
-    implementation(projects.modulithExampleModulesPaymentCommandEndpointAdaptersDrivenNats)
-    implementation(projects.swissknifeLoggerCore)
+    implementation(projects.modulesPaymentCommandEndpointAdaptersDrivingHttpEndpoint)
+    implementation(projects.modulesPaymentCommandEndpointAdaptersDrivenPulsar)
+    implementation(projects.modulesPaymentCommandEndpointAdaptersDrivenNats)
+    implementation(libs.swissknife.logger.core)
 
-    implementation(projects.swissknifeKotlinExtensions)
+    implementation(libs.swissknife.kotlin.extensions)
 }

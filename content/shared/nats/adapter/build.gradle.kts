@@ -1,6 +1,6 @@
 dependencies {
-    api(projects.swissknifeNatsClient)
-    api(projects.swissknifeCoreUtils)
-    api(projects.swissknifeCorrelationCoreDomain)
-    api(projects.modulithExampleModulesPaymentCommandEndpointDomainModel)
+    api(libs.swissknife.nats.client)
+    api(libs.swissknife.core.utils)
+    api(libs.swissknife.correlation.core.domain)
+    api(projects.modulesPaymentCommandEndpointDomainModel)
 }

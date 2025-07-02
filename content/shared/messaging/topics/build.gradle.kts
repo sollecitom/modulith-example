@@ -1,3 +1,3 @@
 dependencies {
-    implementation(projects.pillarAvroSerializationCorrelationCore)
+    implementation(libs.pillar.avro.serialization.correlation.core)
 }

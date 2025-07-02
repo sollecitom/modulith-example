@@ -1,10 +1,10 @@
 dependencies {
-    api(projects.modulithExampleModulesAccountEventProcessorDomainModel)
-    api(projects.swissknifeCorrelationCoreDomain)
-    api(projects.swissknifeServiceDomain)
-    api(projects.swissknifePulsarUtils)
-    api(projects.swissknifeMessagingDomain)
+    api(projects.modulesAccountEventProcessorDomainModel)
+    api(libs.swissknife.correlation.core.domain)
+    api(libs.swissknife.service.domain)
+    api(libs.swissknife.pulsar.utils)
+    api(libs.swissknife.messaging.domain)
 
-    implementation(projects.modulithExampleSharedAccountMessagingConverter)
-    implementation(projects.swissknifeLoggerCore)
+    implementation(projects.sharedAccountMessagingConverter)
+    implementation(libs.swissknife.logger.core)
 }

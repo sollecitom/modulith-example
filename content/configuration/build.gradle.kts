@@ -1,6 +1,6 @@
 dependencies {
-    api(projects.swissknifeLensCoreExtensions)
-    api(projects.swissknifeConfigurationUtils)
-    api(projects.swissknifeSqlDomain)
-    api(projects.swissknifeLoggingStandardSlf4jConfiguration)
+    api(libs.swissknife.lens.core.extensions)
+    api(libs.swissknife.configuration.utils)
+    api(libs.swissknife.sql.domain)
+    api(libs.swissknife.logging.standard.slf4j.configuration)
 }
