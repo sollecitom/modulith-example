@@ -15,8 +15,8 @@ import sollecitom.services.modulith_example.modules.payment_command_endpoint.app
 import sollecitom.services.modulith_example.modules.payment_command_endpoint.application.model.result.ApplicationResult.Successful
 import sollecitom.services.modulith_example.modules.payment_command_endpoint.application.model.result.asResult
 import sollecitom.services.modulith_example.modules.payment_command_endpoint.domain.model.PaymentProcessingResult.ProcessedSuccessfully
-import sollecitom.services.modulith_example.modules.payment_command_endpoint.domain.model.PaymentProcessingResult.Rejected.NonexistentAccount
 import sollecitom.services.modulith_example.modules.payment_command_endpoint.domain.model.PaymentProcessingResult.Rejected.InsufficientBalanceOnSourceAccount
+import sollecitom.services.modulith_example.modules.payment_command_endpoint.domain.model.PaymentProcessingResult.Rejected.NonexistentAccount
 import sollecitom.services.modulith_example.shared.account.domain.model.reference.InternalAccountNumber
 import sollecitom.services.modulith_example.shared.account.domain.test.utils.create
 

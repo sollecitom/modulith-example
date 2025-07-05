@@ -7,9 +7,9 @@ import sollecitom.libs.swissknife.json.utils.jsonSchemaAt
 import sollecitom.libs.swissknife.json.utils.serde.JsonSerde
 import sollecitom.libs.swissknife.json.utils.serde.getValue
 import sollecitom.libs.swissknife.json.utils.serde.setValue
-import sollecitom.services.modulith_example.shared.serialization.json.account.domain.model.jsonSerde
 import sollecitom.services.modulith_example.shared.account.domain.model.event.Deposit
 import sollecitom.services.modulith_example.shared.account.domain.model.reference.AccountReference
+import sollecitom.services.modulith_example.shared.serialization.json.account.domain.model.jsonSerde
 
 private object DepositJsonSerde : JsonSerde.SchemaAware<Deposit> {
 

@@ -1,8 +1,8 @@
 package sollecitom.services.modulith_example.modules.deposit_event_endpoint.adapters.driving.http.endpoint.serde.result
 
+import jsonSerde
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
-import jsonSerde
 import sollecitom.libs.pillar.json.serialization.test.utils.AcmeJsonSerdeTestSpecification
 import sollecitom.libs.swissknife.core.test.utils.testProvider
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator

@@ -1,5 +1,8 @@
 package sollecitom.services.modulith_example.modules.deposit_event_endpoint.adapters.driving.http.contract.tests
 
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 import sollecitom.libs.pillar.http.api.conventions.companyWide
 import sollecitom.libs.swissknife.core.test.utils.testProvider
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
@@ -12,9 +15,6 @@ import sollecitom.libs.swissknife.openapi.validation.http4k.validator.Http4kOpen
 import sollecitom.libs.swissknife.openapi.validation.http4k.validator.implementation.invoke
 import sollecitom.libs.swissknife.web.api.test.utils.LocalHttpDrivingAdapterTestSpecification
 import sollecitom.libs.swissknife.web.api.utils.api.HttpApiDefinition
-import org.junit.jupiter.api.Nested
-import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 
 @TestInstance(PER_CLASS)
 class DepositEndpointHttpDrivingAdapterContractTests : WithHttp4kOpenApiValidationSupport, HttpApiDefinition by HttpApiDefinition.companyWide, CoreDataGenerator by CoreDataGenerator.testProvider, LocalHttpDrivingAdapterTestSpecification, OpenApiProvider by OpenApiProvider.standard {

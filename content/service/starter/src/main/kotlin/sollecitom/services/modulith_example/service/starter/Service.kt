@@ -8,6 +8,8 @@ import sollecitom.libs.pillar.acme.conventions.CompanyConventions
 import sollecitom.libs.pillar.prometheus.micrometer.prometheusMeterRegistry
 import sollecitom.libs.pillar.service.logging.logServiceStarted
 import sollecitom.libs.pillar.service.logging.logServiceStopped
+import sollecitom.libs.pillar.web.api.utils.api.EndpointHttpDrivingAdapter
+import sollecitom.libs.pillar.web.api.utils.api.create
 import sollecitom.libs.swissknife.configuration.utils.configurationPropertiesUnderRoot
 import sollecitom.libs.swissknife.core.domain.identity.factory.invoke
 import sollecitom.libs.swissknife.core.domain.text.Name
@@ -24,9 +26,7 @@ import sollecitom.libs.swissknife.service.domain.ServiceInfo
 import sollecitom.libs.swissknife.service.domain.ServiceModule
 import sollecitom.libs.swissknife.service.domain.ServiceModuleWithHttpDrivingAdapter
 import sollecitom.libs.swissknife.service.readiness.http4k.http4kReadinessCheck
-import sollecitom.libs.pillar.web.api.utils.api.EndpointHttpDrivingAdapter
 import sollecitom.libs.swissknife.web.api.utils.api.HealthHttpDrivingAdapter
-import sollecitom.libs.pillar.web.api.utils.api.create
 import sollecitom.libs.swissknife.web.openapi.utils.OpenApiEndpoint
 import sollecitom.libs.swissknife.web.service.domain.WebInterface
 import sollecitom.libs.swissknife.web.service.domain.WebService

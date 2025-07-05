@@ -5,13 +5,13 @@ import org.http4k.core.Method
 import org.http4k.core.Response
 import org.http4k.core.Status
 import org.http4k.routing.bind
+import sollecitom.libs.pillar.web.api.utils.endpoint.toAuthenticated
 import sollecitom.libs.swissknife.http4k.utils.body
 import sollecitom.libs.swissknife.http4k.utils.lens.jsonObject
 import sollecitom.libs.swissknife.http4k.utils.lens.map
 import sollecitom.libs.swissknife.kotlin.extensions.async.await
 import sollecitom.libs.swissknife.logger.core.loggable.Loggable
 import sollecitom.libs.swissknife.web.api.domain.endpoint.CommandEndpoint
-import sollecitom.libs.pillar.web.api.utils.endpoint.toAuthenticated
 import sollecitom.services.modulith_example.modules.payment_command_endpoint.adapters.driving.http.endpoint.serde.argument.jsonSerde
 import sollecitom.services.modulith_example.modules.payment_command_endpoint.adapters.driving.http.endpoint.serde.result.jsonSerde
 import sollecitom.services.modulith_example.modules.payment_command_endpoint.application.model.result.ApplicationResult

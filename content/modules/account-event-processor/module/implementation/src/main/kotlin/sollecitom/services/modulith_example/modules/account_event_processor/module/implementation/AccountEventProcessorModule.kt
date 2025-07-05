@@ -2,12 +2,12 @@ package sollecitom.services.modulith_example.modules.account_event_processor.mod
 
 import org.apache.pulsar.client.api.PulsarClient
 import org.http4k.config.Environment
+import sollecitom.libs.pillar.messaging.domain.event.processing.withMessageConnector
 import sollecitom.libs.swissknife.core.domain.locale.WithDefaultLocale
 import sollecitom.libs.swissknife.core.domain.text.Name
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
 import sollecitom.libs.swissknife.ddd.domain.EventProcessor
 import sollecitom.libs.swissknife.logger.core.loggable.Loggable
-import sollecitom.libs.pillar.messaging.domain.event.processing.withMessageConnector
 import sollecitom.libs.swissknife.messaging.domain.message.connector.MessageConnector
 import sollecitom.libs.swissknife.messaging.domain.message.properties.MessagePropertyNames
 import sollecitom.libs.swissknife.service.domain.ServiceInfo
