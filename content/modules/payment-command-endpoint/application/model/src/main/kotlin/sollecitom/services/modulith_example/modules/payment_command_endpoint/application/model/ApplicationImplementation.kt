@@ -1,7 +1,7 @@
 package sollecitom.services.modulith_example.modules.payment_command_endpoint.application.model
 
 import kotlinx.coroutines.Deferred
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import sollecitom.libs.swissknife.core.domain.identity.Id
 import sollecitom.libs.swissknife.core.domain.identity.factory.invoke
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
