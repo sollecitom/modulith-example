@@ -10,7 +10,8 @@ sollecitom-acme-schema-catalogue = "1.0.0-SNAPSHOT"
 palantir-git-plugin = "4.0.0"
 
 [libraries]
-sollecitom-gradle-plugins = { module = "sollecitom.gradle-plugins:gradle-plugins", version.ref = "sollecitom-gradle-plugins" }
+sollecitom-gradle-plugins-base = { module = "sollecitom.gradle-plugins:base", version.ref = "sollecitom-gradle-plugins" }
+sollecitom-gradle-plugins-kotlin-jvm = { module = "sollecitom.gradle-plugins:kotlin-jvm", version.ref = "sollecitom-gradle-plugins" }
 acme-schema-catalogue-avro-common = { module = "sollecitom.acme-schema-catalogue:avro-common", version.ref = "sollecitom-acme-schema-catalogue" }
 acme-schema-catalogue-json-common = { module = "sollecitom.acme-schema-catalogue:json-common", version.ref = "sollecitom-acme-schema-catalogue" }
 acme-schema-catalogue-avro-modulith-example = { module = "sollecitom.acme-schema-catalogue:avro-modulith-example", version.ref = "sollecitom-acme-schema-catalogue" }
