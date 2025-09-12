@@ -38,7 +38,7 @@ class SendPaymentCommandEndpoint(private val application: SendPayment, private v
     }
 
     private companion object : Loggable() {
-        private val arguments = Body.Companion.jsonObject().map(SendPayment.Arguments.jsonSerde).toLens()
+        private val arguments = Body.jsonObject().map(SendPayment.Arguments.jsonSerde).toLens()
         private val defaultProcessingTimeout = 10.seconds
     }
 }

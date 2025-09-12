@@ -28,10 +28,10 @@ class DepositEventEndpoint(private val application: PublishDepositEvent) : Event
         val result = application.publishDepositEvent(arguments = arguments)
 
         logger.info { "Finished processing the request on path '$path' with result {$result}" }
-        Response.Companion(Status.Companion.OK).body(result, ApplicationResult.Companion.jsonSerde)
+        Response.Companion(Status.OK).body(result, ApplicationResult.jsonSerde)
     }
 
     private companion object : Loggable() {
-        private val arguments = Body.Companion.jsonObject().map(PublishDepositEvent.Arguments.jsonSerde).toLens()
+        private val arguments = Body.jsonObject().map(PublishDepositEvent.Arguments.jsonSerde).toLens()
     }
 }

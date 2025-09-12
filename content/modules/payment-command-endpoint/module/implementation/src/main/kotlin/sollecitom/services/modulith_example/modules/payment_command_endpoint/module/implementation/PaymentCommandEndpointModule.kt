@@ -26,7 +26,7 @@ private class PaymentCommandEndpointModule(pulsarClient: PulsarClient, serviceIn
 
     override val name get() = moduleName
     private val instanceInfo = serviceInfo.withModuleName(moduleName)
-    private val accountEventPublisher = MessagePublisher.Companion.accountEvent(pulsarClient, instanceInfo)
+    private val accountEventPublisher = MessagePublisher.accountEvent(pulsarClient, instanceInfo)
     private val sendPaymentProcessingResultSubscriber: SendPaymentProcessingResultSubscriber = StubbedSendPaymentProcessingResultSubscriber {
         delay(2.seconds)
         ProcessedSuccessfully

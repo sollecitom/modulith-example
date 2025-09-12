@@ -81,7 +81,7 @@ interface SendPaymentCommandEndpointHttpTestSpecification : ErrorsEndpointHttpTe
 
         assertThat(response).compliesWithOpenApiForRequest(request)
         assertThat(response.status).isEqualTo(Status.OK)
-        val result = response.body(ApplicationResult.Companion.jsonSerde)
+        val result = response.body(ApplicationResult.jsonSerde)
         assertThat(result).matches(applicationResult)
         assertThat(receivedCommand).isNotNull().isEqualTo(command)
         assertThat(logs).haveContextForkedFrom(invocationContext)
@@ -114,7 +114,7 @@ interface SendPaymentCommandEndpointHttpTestSpecification : ErrorsEndpointHttpTe
 
         assertThat(response).compliesWithOpenApiForRequest(request)
         assertThat(response.status).isEqualTo(Status.OK)
-        val result = response.body(ApplicationResult.Companion.jsonSerde)
+        val result = response.body(ApplicationResult.jsonSerde)
         assertThat(result).matches(applicationResult)
         assertThat(receivedCommand).isNotNull().isEqualTo(command)
         assertThat(logs).haveContextForkedFrom(invocationContext)
@@ -141,7 +141,7 @@ interface SendPaymentCommandEndpointHttpTestSpecification : ErrorsEndpointHttpTe
 
         assertThat(response).compliesWithOpenApiForRequest(request)
         assertThat(response.status).isEqualTo(Status.OK)
-        val result = response.body(ApplicationResult.Companion.jsonSerde)
+        val result = response.body(ApplicationResult.jsonSerde)
         assertThat(result).matches(applicationResult)
         assertThat(receivedCommand).isNotNull().isEqualTo(command)
         assertThat(logs).haveContextForkedFrom(invocationContext)

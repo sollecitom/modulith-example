@@ -21,7 +21,7 @@ private class DepositEventEndpointModule(pulsarClient: PulsarClient, serviceInfo
 
     override val name get() = moduleName
     private val instanceInfo = serviceInfo.withModuleName(moduleName)
-    private val accountEventPublisher = MessagePublisher.Companion.accountEvent(pulsarClient, instanceInfo)
+    private val accountEventPublisher = MessagePublisher.accountEvent(pulsarClient, instanceInfo)
     private val application = Application.create(publisher = accountEventPublisher)
     override val httpEndpoints = setOf(
         DepositEventEndpoint(application),

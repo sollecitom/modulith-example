@@ -25,7 +25,7 @@ private class PulsarAccountEventConnector(
         coreDataGenerator: CoreDataGenerator
     ) : this(
         source = MessageSource.accountEvents(pulsar, instanceInfo, customizeConsumer),
-        publisher = with(coreDataGenerator) { MessagePublisher.Companion.accountEvent(pulsar, instanceInfo, customizeProducer) }
+        publisher = with(coreDataGenerator) { MessagePublisher.accountEvent(pulsar, instanceInfo, customizeProducer) }
     )
 
     override suspend fun start() {

@@ -67,7 +67,7 @@ interface DepositEventEndpointHttpTestSpecification : ErrorsEndpointHttpTestSpec
 
         assertThat(response).compliesWithOpenApiForRequest(request)
         assertThat(response.status).isEqualTo(Status.OK)
-        val result = response.body(ApplicationResult.Companion.jsonSerde)
+        val result = response.body(ApplicationResult.jsonSerde)
         assertThat(result).isEqualTo(ApplicationResult.Successful)
         assertThat(receivedEvent).isNotNull().isEqualTo(event)
         assertThat(logs).haveContextForkedFrom(invocationContext)
@@ -93,7 +93,7 @@ interface DepositEventEndpointHttpTestSpecification : ErrorsEndpointHttpTestSpec
 
         assertThat(response).compliesWithOpenApiForRequest(request)
         assertThat(response.status).isEqualTo(Status.OK)
-        val result = response.body(ApplicationResult.Companion.jsonSerde)
+        val result = response.body(ApplicationResult.jsonSerde)
         assertThat(result).isEqualTo(ApplicationResult.Error)
         assertThat(receivedEvent).isNotNull().isEqualTo(event)
         assertThat(logs).haveContextForkedFrom(invocationContext)
