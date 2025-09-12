@@ -54,32 +54,36 @@ There are different module types, which are the archetypes for every sort of com
 
 ### List
 
-#### Payment Command Endpoint
+#### Done
+
+##### Payment Command Endpoint
 
 - A [command endpoint](#command-endpoint) that accepts `send-payment` commands over HTTP, and publishes them.
 - If the command is rejected, the endpoint informs the client.
 
-#### Deposit Event Endpoint
+##### Deposit Event Endpoint
 
 - An [event endpoint](#event-endpoint) that accepts `deposit` events over HTTP, and publishes them.
 
-#### Account Event Processor
+##### Account Event Processor
 
 - An [event processor](#event-processor) that processes all the events for an account, and publishes the results of the processing.
 - If the current balance wouldn't cover a payment, the `send-payment` command is rejected.
 - If the target account is equal to the source account, the `send-payment` command is rejected.
 
-#### Transaction History Query Endpoint
+#### To Do
+
+##### Transaction History Query Endpoint
 
 - Aggregates the transaction history for an account.
 - Returns the paginated transaction history for an account, over HTTP.
 
-#### Current Balance Query Endpoint
+##### Current Balance Query Endpoint
 
 - Projects the current balance from the transaction history.
 - Returns the current balance for an account, over HTTP.
 
-#### Tinybird Event Sink
+##### Tinybird Event Sink
 
 - Adds the events to a Tinybird instance.
 - (I'm still unsure whether this is worth it, so only maybe)
