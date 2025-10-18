@@ -1,7 +1,7 @@
 [versions]
 # libraries
 kotlin = "2.2.20"
-http4k = "6.18.1.0"
+http4k = "6.19.0.0"
 sollecitom-gradle-plugins = "1.0.0-SNAPSHOT"
 sollecitom-swissknife = "1.0.0-SNAPSHOT"
 sollecitom-pillar = "1.0.0-SNAPSHOT"
