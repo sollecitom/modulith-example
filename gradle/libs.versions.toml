@@ -1,6 +1,6 @@
 [versions]
 # libraries
-kotlin = "2.3.0"
+kotlin = "2.3.10"
 http4k = "6.27.0.0"
 sollecitom-gradle-plugins = "1.0.0-SNAPSHOT"
 sollecitom-swissknife = "1.0.0-SNAPSHOT"
