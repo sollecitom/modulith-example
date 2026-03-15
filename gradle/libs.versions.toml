@@ -1,13 +1,13 @@
 [versions]
 # libraries
 kotlin = "2.3.10"
-http4k = "6.31.0.0"
+http4k = "6.33.0.0"
 sollecitom-gradle-plugins = "1.0.0-SNAPSHOT"
 sollecitom-swissknife = "1.0.0-SNAPSHOT"
 sollecitom-pillar = "1.0.0-SNAPSHOT"
 sollecitom-acme-schema-catalogue = "1.0.0-SNAPSHOT"
 # plugins
-palantir-git-plugin = "4.3.0"
+palantir-git-plugin = "5.0.0"
 
 [libraries]
 sollecitom-gradle-plugins-base = { module = "sollecitom.gradle-plugins:base", version.ref = "sollecitom-gradle-plugins" }
