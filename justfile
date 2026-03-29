@@ -9,11 +9,12 @@ push:
 pull:
     git pull
 
+# Jib 3.5.3 is incompatible with configuration cache (serializes Project), so jibDockerBuild runs separately
 build:
-    ./gradlew build jibDockerBuild containerBasedServiceTest
+    ./gradlew build && ./gradlew --no-configuration-cache jibDockerBuild containerBasedServiceTest
 
 rebuild:
-    ./gradlew --refresh-dependencies --rerun-tasks clean build jibDockerBuild containerBasedServiceTest
+    ./gradlew --refresh-dependencies --rerun-tasks clean build && ./gradlew --no-configuration-cache --rerun-tasks jibDockerBuild containerBasedServiceTest
 
 update-dependencies:
     ./gradlew versionCatalogUpdate
