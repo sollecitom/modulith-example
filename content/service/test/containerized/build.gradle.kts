@@ -1,7 +1,11 @@
+plugins {
+    id("sollecitom.kotlin-library-conventions")
+    id("sollecitom.container-based-service-test-conventions")
+}
+
 import sollecitom.plugins.conventions.task.container.test.ContainerBasedServiceTestConvention
 import sollecitom.plugins.conventions.task.container.test.containerBasedServiceTestImplementation
 
-apply<ContainerBasedServiceTestConvention>()
 configure<ContainerBasedServiceTestConvention.Extension> {
     starterModuleName = projects.serviceStarter.name
 }

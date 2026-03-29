@@ -1,3 +1,7 @@
+plugins {
+    id("sollecitom.kotlin-library-conventions")
+}
+
 dependencies {
     api(libs.swissknife.correlation.core.domain)
     api(libs.pillar.avro.serialization.core)

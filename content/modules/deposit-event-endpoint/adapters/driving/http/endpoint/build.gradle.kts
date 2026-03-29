@@ -1,3 +1,7 @@
+plugins {
+    id("sollecitom.kotlin-library-conventions")
+}
+
 dependencies {
     api(projects.modulesDepositEventEndpointApplicationModel)
     api(libs.pillar.web.api.utils)

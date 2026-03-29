@@ -1,3 +1,7 @@
+plugins {
+    id("sollecitom.kotlin-library-conventions")
+}
+
 dependencies {
     api(projects.sharedAccountDomainModel)
     api(libs.swissknife.correlation.core.domain)

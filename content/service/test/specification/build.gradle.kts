@@ -1,3 +1,7 @@
+plugins {
+    id("sollecitom.kotlin-library-conventions")
+}
+
 dependencies {
     api(libs.swissknife.web.service.domain)
     api(libs.pillar.web.api.test.utils)

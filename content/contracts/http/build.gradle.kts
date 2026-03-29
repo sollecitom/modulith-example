@@ -1,3 +1,7 @@
+plugins {
+    id("sollecitom.kotlin-library-conventions")
+}
+
 dependencies {
     api(libs.swissknife.openapi.provider)
     api(libs.swissknife.openapi.parser)

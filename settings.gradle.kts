@@ -1,12 +1,19 @@
 @file:Suppress("UnstableApiUsage")
 
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+    includeBuild("../gradle-plugins")
+}
+
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.10.0"
 }
 
 rootProject.name = "modulith-example"
 
-includeBuild("../gradle-plugins")
 includeBuild("../swissknife")
 includeBuild("../pillar")
 includeBuild("../acme-schema-catalogue")

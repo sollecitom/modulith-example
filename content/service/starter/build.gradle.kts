@@ -1,3 +1,8 @@
+plugins {
+    id("sollecitom.kotlin-library-conventions")
+    id("sollecitom.jib-docker-build-conventions")
+}
+
 import com.palantir.gradle.gitversion.VersionDetails
 import sollecitom.plugins.conventions.task.jib.JibDockerBuildConvention
 
@@ -23,12 +28,10 @@ dependencies {
     implementation(projects.modulesPaymentCommandEndpointModuleImplementation)
 }
 
-apply<JibDockerBuildConvention>()
-
 val serviceName = "modulith-example-service"
-val dockerRemoteRepository: String by project.extra
-val dockerBaseImageParam: String by project.extra
-val gitVersion: VersionDetails by project.extra
+val dockerRemoteRepository: String by rootProject.extra
+val dockerBaseImageParam: String by rootProject.extra
+val gitVersion: VersionDetails by rootProject.extra
 val mainAppPort = "8081"
 val healthAppPort = "8082"
 val tmpVolume = "/tmp"
