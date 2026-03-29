@@ -7,6 +7,9 @@ plugins {
 rootProject.name = "modulith-example"
 
 includeBuild("../gradle-plugins")
+includeBuild("../swissknife")
+includeBuild("../pillar")
+includeBuild("../acme-schema-catalogue")
 
 fun resource(vararg pathSegments: String) = subProject(rootFolder = "resources", pathSegments = pathSegments)
 
