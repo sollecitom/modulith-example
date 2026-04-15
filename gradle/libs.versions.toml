@@ -2,7 +2,7 @@
 # libraries
 kotlin = "2.3.20"
 http4k = "6.42.0.0"
-sollecitom-gradle-plugins = "1.0.0-SNAPSHOT"
+sollecitom-gradle-plugins = "1.0.2"
 sollecitom-swissknife = "1.0.0-SNAPSHOT"
 sollecitom-pillar = "1.0.0-SNAPSHOT"
 sollecitom-acme-schema-catalogue = "1.0.0-SNAPSHOT"
@@ -89,3 +89,9 @@ http4k-client-apache-async = { module = "org.http4k:http4k-client-apache-async" 
 [plugins]
 com-palantir-git-version = { id = "com.palantir.git-version", version.ref = "palantir-git-plugin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+sollecitom-aggregate-test-metrics-conventions = { id = "sollecitom.aggregate-test-metrics-conventions", version.ref = "sollecitom-gradle-plugins" }
+sollecitom-container-based-service-test-conventions = { id = "sollecitom.container-based-service-test-conventions", version.ref = "sollecitom-gradle-plugins" }
+sollecitom-dependency-update-conventions = { id = "sollecitom.dependency-update-conventions", version.ref = "sollecitom-gradle-plugins" }
+sollecitom-jib-docker-build-conventions = { id = "sollecitom.jib-docker-build-conventions", version.ref = "sollecitom-gradle-plugins" }
+sollecitom-kotlin-library-conventions = { id = "sollecitom.kotlin-library-conventions", version.ref = "sollecitom-gradle-plugins" }
+sollecitom-security-scan-conventions = { id = "sollecitom.security-scan-conventions", version.ref = "sollecitom-gradle-plugins" }
