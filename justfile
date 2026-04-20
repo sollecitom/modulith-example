@@ -17,6 +17,7 @@ build:
 
 cleanup:
     bash ../scripts/cleanup-maven-local.sh --repo-root . --keep 2 --max-age-days 14
+    bash ../scripts/cleanup-docker-images.sh --keep 2 ghcr.io/sollecitom/modulith-example-service
 
 update-internal-dependencies:
     ./gradlew updateInternalCatalogVersions
