@@ -15,6 +15,12 @@ pull:
 build:
     ./gradlew updateInternalCatalogVersions && ./gradlew build && ./gradlew --no-configuration-cache jibDockerBuild containerBasedServiceTest securityScan
 
+license-audit:
+    bash ../scripts/run-license-audit.sh modulith-example
+
+generate-sbom:
+    bash ../scripts/run-generate-sbom.sh modulith-example
+
 cleanup:
     bash ../scripts/cleanup-maven-local.sh --repo-root . --keep 2 --max-age-days 14
     bash ../scripts/cleanup-docker-images.sh --keep 2 ghcr.io/sollecitom/modulith-example-service
