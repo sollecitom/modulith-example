@@ -18,6 +18,9 @@ build:
 license-audit:
     bash ../scripts/run-license-audit.sh modulith-example
 
+license-audit-compact:
+    bash ../scripts/run-license-audit.sh modulith-example --compact
+
 generate-sbom:
     bash ../scripts/run-generate-sbom.sh modulith-example
 
