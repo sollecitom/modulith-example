@@ -13,7 +13,7 @@ pull:
 
 # Jib 3.5.3 is incompatible with configuration cache (serializes Project), so jibDockerBuild runs separately
 build:
-    ./gradlew updateInternalCatalogVersions && ./gradlew build && ./gradlew --no-configuration-cache jibDockerBuild containerBasedServiceTest securityScan
+    bash ../scripts/update-internal-catalog-versions.sh . && ./gradlew build && ./gradlew --no-configuration-cache jibDockerBuild containerBasedServiceTest securityScan
 
 license-audit:
     bash ../scripts/run-license-audit.sh modulith-example
@@ -29,7 +29,7 @@ cleanup:
     bash ../scripts/cleanup-docker-images.sh --keep 2 ghcr.io/sollecitom/modulith-example-service
 
 update-internal-dependencies:
-    ./gradlew updateInternalCatalogVersions
+    bash ../scripts/update-internal-catalog-versions.sh .
 
 rebuild:
     ./gradlew --refresh-dependencies --rerun-tasks clean build && ./gradlew --no-configuration-cache --rerun-tasks jibDockerBuild containerBasedServiceTest securityScan
