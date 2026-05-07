@@ -2,7 +2,7 @@ package sollecitom.services.modulith_example.service.test.specification
 
 import kotlinx.coroutines.runBlocking
 import org.apache.pulsar.client.admin.PulsarAdmin
-import org.testcontainers.containers.PulsarContainer
+import org.testcontainers.pulsar.PulsarContainer
 import sollecitom.libs.pillar.acme.conventions.CompanyConventions
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
 import sollecitom.libs.swissknife.messaging.domain.topic.Topic

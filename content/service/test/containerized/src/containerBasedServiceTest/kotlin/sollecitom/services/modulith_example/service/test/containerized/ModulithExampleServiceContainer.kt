@@ -3,7 +3,7 @@ package sollecitom.services.modulith_example.service.test.containerized
 import com.github.dockerjava.api.model.AuthConfig
 import org.apache.http.auth.UsernamePasswordCredentials
 import org.testcontainers.containers.GenericContainer
-import org.testcontainers.containers.PulsarContainer
+import org.testcontainers.pulsar.PulsarContainer
 import org.testcontainers.utility.DockerImageName
 import org.testcontainers.utility.RegistryAuthLocator
 import sollecitom.libs.pillar.acme.conventions.CompanyConventions

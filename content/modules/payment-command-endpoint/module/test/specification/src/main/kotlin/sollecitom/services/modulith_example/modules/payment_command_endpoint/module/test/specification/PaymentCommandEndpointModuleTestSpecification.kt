@@ -10,7 +10,7 @@ import org.http4k.core.Method.POST
 import org.http4k.core.Request
 import org.http4k.core.Status
 import org.junit.jupiter.api.Test
-import org.testcontainers.containers.PulsarContainer
+import org.testcontainers.pulsar.PulsarContainer
 import sollecitom.libs.pillar.web.api.utils.api.withInvocationContext
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
 import sollecitom.libs.swissknife.correlation.core.test.utils.testWithInvocationContext

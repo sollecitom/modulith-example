@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 import org.testcontainers.containers.Network
-import org.testcontainers.containers.PulsarContainer
+import org.testcontainers.pulsar.PulsarContainer
 import sollecitom.libs.pillar.acme.business.domain.Example
 import sollecitom.libs.pillar.acme.conventions.CompanyConventions
 import sollecitom.libs.pillar.web.api.test.utils.local.pod.testContainers
