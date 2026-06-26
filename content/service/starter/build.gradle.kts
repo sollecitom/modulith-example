@@ -46,17 +46,18 @@ configure<JibDockerBuildConvention.Extension> {
     gitVersion.gitHashFull?.let {
         tags = listOf(it)
     }
-    args = listOf(
-        "-Djava.security.egd=file:/dev/./urandom"
-    )
     jvmFlags = listOf(
-        "-XX:+UnlockExperimentalVMOptions",
+        // Capture heap dump + JVM fatal-error log to the writable /tmp volume, then exit so the orchestrator restarts cleanly.
         "-XX:+HeapDumpOnOutOfMemoryError",
-        "-XX:HeapDumpPath=$tmpVolume/java_pid<pid>.hprof",
+        "-XX:HeapDumpPath=$tmpVolume",
+        "-XX:+ExitOnOutOfMemoryError",
+        "-XX:ErrorFile=$tmpVolume/hs_err_pid%p.log",
+        // Heap sizing for containers.
         "-XX:MaxRAMPercentage=$maxRamPercentage",
+        // Low-latency GC (generational ZGC on JDK 25+).
         "-XX:+UseZGC",
-        "-XX:+AlwaysPreTouch",
-        "-XX:+UseNUMA"
+        // Keep stack traces for hot, repeated exceptions in production logs.
+        "-XX:-OmitStackTraceInFastThrow"
     )
     environment = mutableMapOf(
         "SERVICE_PORT" to mainAppPort,
