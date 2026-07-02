@@ -2,4 +2,4 @@
 # Format: one CVE ID per line; "#" starts a comment; an inline "# reason" is shown in the warning.
 # Re-check on every base-image rebuild and remove the entry once the CVE is no longer reported.
 
-CVE-2026-45447  # OpenSSL PKCS7_verify use-after-free in the eclipse-temurin jre-noble (Ubuntu 24.04) base image. Newly-disclosed CVE against the already-present openssl 3.0.13-0ubuntu3.9; no patched Ubuntu/Temurin noble base available as of 2026-06-26. Alpine base rejected (its own HIGH p11-kit CVE-2026-2100 + musl risk). Clears when noble rebuilds with openssl 3.0.13-0ubuntu3.11.
+# (none currently — CVE-2026-45447 removed 2026-07-02 after the noble base rebuilt with patched openssl)
