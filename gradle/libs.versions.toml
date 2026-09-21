@@ -2,9 +2,9 @@
 # libraries
 kotlin = "2.4.20"
 http4k = "6.60.0.0"
-sollecitom-gradle-plugins = "1.0.29"
-sollecitom-swissknife = "1.0.31"
-sollecitom-pillar = "1.0.13"
+sollecitom-gradle-plugins = "1.0.30"
+sollecitom-swissknife = "1.0.33"
+sollecitom-pillar = "1.0.15"
 sollecitom-acme-schema-catalogue = "1.0.5"
 # plugins
 palantir-git-plugin = "5.1.0"
