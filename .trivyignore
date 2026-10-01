@@ -2,4 +2,11 @@
 # Format: one CVE ID per line; "#" starts a comment; an inline "# reason" is shown in the warning.
 # Re-check on every base-image rebuild and remove the entry once the CVE is no longer reported.
 
-# (none currently — CVE-2026-45447 removed 2026-07-02 after the noble base rebuilt with patched openssl)
+# Added 2026-10-01. Ubuntu fixed this in openssl 3.0.13-0ubuntu3.16, but no eclipse-temurin tag has rebuilt
+# against it yet (26-jre-noble, 26-noble, 25-jre-noble and 26-jre all still ship a vulnerable openssl), so there
+# is no patched base image to move to. Not exploitable here: the service speaks TLS through the JVM's own JSSE
+# stack — netty-tcnative is absent from the runtime classpath, so nothing links against the OS libssl — and no
+# component speaks DTLS, which is the affected protocol.
+CVE-2026-84782 # DTLS-only openssl info disclosure; JVM uses JSSE, not OS libssl. Drop when the noble base rebuilds.
+
+# Previously accepted: CVE-2026-45447 removed 2026-07-02 after the noble base rebuilt with patched openssl
