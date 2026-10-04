@@ -25,8 +25,8 @@ class SendPaymentCommandEndpoint(private val application: SendPayment, private v
 
     override val route = path bind Method.POST toAuthenticated { request ->
 
-        logger.info { "Received a request on path '$path' with arguments $arguments" }
         val arguments = arguments(request)
+        logger.info { "Received a request on path '$path' with arguments $arguments" }
 
         val result = application.sendPayment(arguments = arguments)
         if (result is ApplicationResult.Successful) {

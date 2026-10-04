@@ -18,7 +18,6 @@ import sollecitom.services.modulith_example.modules.payment_command_endpoint.ada
 import sollecitom.services.modulith_example.modules.payment_command_endpoint.application.model.Application
 import sollecitom.services.modulith_example.modules.payment_command_endpoint.application.model.create
 import sollecitom.services.modulith_example.modules.payment_command_endpoint.domain.model.PaymentProcessingResult.ProcessedSuccessfully
-import sollecitom.services.modulith_example.modules.payment_command_endpoint.domain.model.SendPaymentProcessingResultSubscriber
 import sollecitom.services.modulith_example.shared.account.messaging.adapters.accountEvent
 import kotlin.time.Duration.Companion.seconds
 
@@ -27,7 +26,7 @@ private class PaymentCommandEndpointModule(pulsarClient: PulsarClient, serviceIn
     override val name get() = moduleName
     private val instanceInfo = serviceInfo.withModuleName(moduleName)
     private val accountEventPublisher = MessagePublisher.accountEvent(pulsarClient, instanceInfo)
-    private val sendPaymentProcessingResultSubscriber: SendPaymentProcessingResultSubscriber = StubbedSendPaymentProcessingResultSubscriber {
+    private val sendPaymentProcessingResultSubscriber = StubbedSendPaymentProcessingResultSubscriber {
         delay(2.seconds)
         ProcessedSuccessfully
     }
@@ -38,7 +37,10 @@ private class PaymentCommandEndpointModule(pulsarClient: PulsarClient, serviceIn
 
     override suspend fun start() = accountEventPublisher.start()
 
-    override suspend fun stop() = accountEventPublisher.stop()
+    override suspend fun stop() {
+        accountEventPublisher.stop()
+        sendPaymentProcessingResultSubscriber.stop()
+    }
 
     companion object : Loggable() {
 

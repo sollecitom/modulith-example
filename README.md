@@ -90,12 +90,14 @@ There are different module types, which are the archetypes for every sort of com
 
 ## SDKs
 
-There are also example SDKs in Kotlin.
+### To Do
 
-### Account Holder SDK
+The following example SDKs in Kotlin are planned.
+
+#### Account Holder SDK
 
 This SDK allows a client to perform the operations an account holder can do, including the `send-payment` command, and the `get-current-balance` and `get-transaction-history` queries.
 
-### Deposits SDK
+#### Deposits SDK
 
 This SDK allows a client to inform the system of a deposit that happened on an account.

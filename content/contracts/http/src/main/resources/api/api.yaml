@@ -77,8 +77,8 @@ paths:
             schema:
               $ref: '/modulith-example/payment-command-endpoint/arguments/Arguments.json'
             examples:
-              DepositEvent:
-                summary: A deposit event.
+              SendPayment:
+                summary: A send payment command.
                 value:
                   {
                     "amount": { "currency": "GBP","units": 2246243 },

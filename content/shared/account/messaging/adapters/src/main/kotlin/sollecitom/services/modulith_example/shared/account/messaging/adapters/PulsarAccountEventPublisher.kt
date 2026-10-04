@@ -29,7 +29,7 @@ private class PulsarAccountEventPublisher(
     override suspend fun publish(value: AccountEvent, parentMessageId: Message.Id?, originatingMessageId: Message.Id?) {
 
         val messageId = messageProducer.produce(value, parentMessageId, originatingMessageId)
-        logger.info { "Successfully produced compliance plan event in Avro to topic Pulsar '${messageProducer.topic.fullName.value}'. Message ID: '${messageId.stringRepresentation}', Event: {$value}" }
+        logger.info { "Successfully produced account event in Avro to topic Pulsar '${messageProducer.topic.fullName.value}'. Message ID: '${messageId.stringRepresentation}', Event: {$value}" }
     }
 
     override suspend fun start() = messageProducer.start()

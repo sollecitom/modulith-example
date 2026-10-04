@@ -80,6 +80,7 @@ class Service(private val environment: Environment, coreDataGenerators: CoreData
             logger.info { "Stopped module '${module.name.value}'" }
         }
         healthHttpDrivingAdapter.stop()
+        pulsarClient.value.close()
         logServiceStopped()
     }
 

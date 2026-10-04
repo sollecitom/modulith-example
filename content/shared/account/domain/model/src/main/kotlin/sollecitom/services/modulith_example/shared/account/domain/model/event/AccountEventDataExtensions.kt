@@ -6,4 +6,4 @@ fun SendPaymentCommand.rejectedDueToAccountNotFound(): SendPaymentCommand.Accoun
 
 fun SendPaymentCommand.accepted(): OutboundPayment = OutboundPayment(sourceAccount = sourceAccount, amount = amount, targetAccount = targetAccount)
 
-fun OutboundPayment.inbound(): InboundPayment = InboundPayment(targetAccount = sourceAccount, sourceAccount = targetAccount, amount = amount)
+fun OutboundPayment.inbound(): InboundPayment = InboundPayment(targetAccount = targetAccount, sourceAccount = sourceAccount, amount = amount)

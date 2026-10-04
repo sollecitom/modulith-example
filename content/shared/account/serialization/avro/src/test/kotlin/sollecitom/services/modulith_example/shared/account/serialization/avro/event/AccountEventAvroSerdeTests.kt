@@ -8,6 +8,7 @@ import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
 import sollecitom.libs.swissknife.ddd.test.utils.asEvent
 import sollecitom.services.modulith_example.shared.account.domain.model.event.AccountEvent
 import sollecitom.services.modulith_example.shared.account.domain.model.event.Deposit
+import sollecitom.services.modulith_example.shared.account.domain.model.event.InboundPayment
 import sollecitom.services.modulith_example.shared.account.domain.model.event.OutboundPayment
 import sollecitom.services.modulith_example.shared.account.domain.model.event.SendPaymentCommand
 import sollecitom.services.modulith_example.shared.account.domain.test.utils.create
@@ -21,7 +22,7 @@ class AccountEventAvroSerdeTests : AcmeAvroSerdeTestSpecification<AccountEvent>,
     override fun parameterizedArguments() = listOf(
         "deposit" to Deposit.create().asEvent(),
         "outbound-payment" to OutboundPayment.create().asEvent(),
-        "inbound-payment" to OutboundPayment.create().asEvent(),
+        "inbound-payment" to InboundPayment.create().asEvent(),
         "send-payment-command-received" to SendPaymentCommand.create().asEvent(),
         "insufficient-balance-for-send-payment-command-received" to SendPaymentCommand.InsufficientBalanceError.create().asEvent(),
         "account-not-found-for-send-payment-command-received" to SendPaymentCommand.AccountNotFoundError.create().asEvent()

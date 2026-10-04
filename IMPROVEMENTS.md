@@ -7,22 +7,21 @@ Modular monolith template demonstrating event-driven architecture with a simplif
 
 | Dimension | Rating | Notes |
 |-----------|--------|-------|
-| Build system | A | Gradle 9.4.0, 88+ dependency refs, excellent |
+| Build system | A | Gradle 9.8.0, 88+ dependency refs, excellent |
 | Code quality | A | Strong DDD, clean architecture, hexagonal adapters |
-| Test coverage | B+ | 26 test files across 31 modules, contract + integration tests |
+| Test coverage | B+ | 29 test files across 47 modules, contract + integration tests |
 | Documentation | A- | Comprehensive README with scenario, module types, completion status |
 | Dependency freshness | A | All current |
-| Modularity | A+ | 31 modules, exemplary layer separation per module |
+| Modularity | A+ | 47 modules, exemplary layer separation per module |
 | Maintainability | A | Production-quality code, clear patterns |
 
 ## Structure
-- 31 content modules with per-module layers: `domain/model`, `application/model`, `adapters/driving/http`, `adapters/driven/pulsar`, `module/implementation`, `module/test/specification`
-- 58 production files, 26 test files
+- 47 content modules with per-module layers: `domain/model`, `application/model`, `adapters/driving/http`, `adapters/driven/pulsar`, `module/implementation`, `module/test/specification`
+- 58 production files, 29 test files
 - Patterns: DDD, hexagonal/ports-and-adapters, event choreography, CQRS (partial)
 
 ## Issues
 - CQRS incomplete: Query endpoints not implemented (noted in README TODO)
-- SNAPSHOT dependencies throughout
 - No error handling / saga / compensation patterns shown
 - No distributed tracing integration despite OpenTelemetry being available
 - Single account-event-processor could bottleneck with scale

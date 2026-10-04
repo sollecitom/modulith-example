@@ -14,6 +14,7 @@ import sollecitom.libs.swissknife.configuration.utils.instanceGroupName
 import sollecitom.libs.swissknife.configuration.utils.instanceNodeName
 import sollecitom.libs.swissknife.core.domain.identity.factory.invoke
 import sollecitom.libs.swissknife.core.domain.lifecycle.startBlocking
+import sollecitom.libs.swissknife.core.domain.lifecycle.stopBlocking
 import sollecitom.libs.swissknife.core.test.utils.testProvider
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
 import sollecitom.libs.swissknife.lens.core.extensions.networking.healthPort
@@ -71,5 +72,8 @@ class InProcessServiceTests : ServiceTestSpecification, CoreDataGenerator by Cor
     }
 
     @AfterAll
-    fun afterAll() = specificationAfterAll()
+    fun afterAll() {
+        service.stopBlocking()
+        specificationAfterAll()
+    }
 }
