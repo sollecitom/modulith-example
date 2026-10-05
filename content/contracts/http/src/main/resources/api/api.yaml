@@ -105,11 +105,11 @@ components:
     invocationContext:
       name: x-acme-invocation-context
       in: header
-      description: Invocation context from the API gateway
+      description: Invocation context from the API gateway, as the base64url encoding (without padding) of its UTF-8 JSON. The JSON follows the schema at /json/schemas/acme/common/correlation/context/InvocationContext.json
       required: true
-      explode: false
       schema:
-        $ref: '/json/schemas/acme/common/correlation/context/InvocationContext.json'
+        type: string
+        pattern: '^[A-Za-z0-9_-]+$'
       examples:
         InvocationContext:
           $ref: '#/components/examples/InvocationContext'
@@ -248,14 +248,161 @@ components:
 
   examples:
     InvocationContext:
-      summary: The invocation context as JSON.
-      value:
+      summary: The invocation context, as base64url-encoded JSON.
+      description: |
+        The encoded JSON is:
+
+        ```json
         {
-          "trace": { "originating": { "created-at": "2024-06-23T08:07:02.219789Z","id": { "type": "ksuid","value": "2iGw3r6dPjE3GPLugvRXcdhwEW2" } },"parent": { "created-at": "2024-06-23T08:07:03.219789Z","id": { "type": "ksuid","value": "2iGw3r6dPjE3GPLugvRXcdhwEW3" } },"invocation": { "created-at": "2024-06-23T08:07:05.219789Z","id": { "type": "ksuid","value": "2iGw3r6dPjE3GPLugvRXcdhwEW4" } },"external": { "action-id": { "type": "string","value": "01J1224V83KZS4487MPF0KN5RB" },"invocation-id": { "type": "string","value": "01J1224V83KZS4487MPF0KN5RA" } } },
-          "access": { "actor": { "type": "direct","account": { "id": { "type": "ksuid","value": "2iGw3r6dPjE3GPLugvRXcdhwEVv" },"type": "user","locale": "en-GB","tenant": { "id": { "type": "ksuid","value": "2iGw3r6dPjE3GPLugvRXcdhwEVx" } },"customer": { "is-test": false,"id": { "type": "ksuid","value": "2iGw3r6dPjE3GPLugvRXcdhwEVw" } } },"authentication": { "session": { "id": { "type": "ksuid","value": "2iGw3r6dPjE3GPLugvRXcdhwEVz" },"type": "simple" },"type": "credentials-based","token": { "valid-to": "2024-06-23T08:32:05.219801Z","id": { "type": "ksuid","value": "2iGw3r6dPjE3GPLugvRXcdhwEVy" },"valid-from": "2024-06-23T08:02:05.219801Z" } } },"authorization": { "roles": { "values": [ { "name": "user" } ] } },"origin": { "client-info": { "agent": { "name": "Apache-HttpAsyncClient","version": { "patch": 1,"major": 5,"minor": 2,"type": "semantic" },"class-name": "Special" },"layout-engine": { "name": "AppleWebKit","version": { "patch": 25,"major": 800,"minor": 6,"type": "semantic" },"class-name": "WebKit" },"operating-system": { "name": "Android (Upside Down Cake)","version": { "type": "simple","value": "14" },"class-name": "Android" },"device": { "name": "Pixel 8","brand": "Google","class-name": "Mobile" } },"ip-address": "127.0.0.1" },"scope": { "container-stack": [ { "id": { "type": "ksuid","value": "2iGw3r6dPjE3GPLugvRXcdhwEW0" } },{ "id": { "type": "ksuid","value": "2iGw3r6dPjE3GPLugvRXcdhwEW1" } } ] },"is-test": false,"type": "authenticated" },
-          "toggles": { "values": [ ] },
+          "trace": {
+            "originating": {
+              "created-at": "2024-06-23T08:07:02.219789Z",
+              "id": {
+                "type": "ksuid",
+                "value": "2iGw3r6dPjE3GPLugvRXcdhwEW2"
+              }
+            },
+            "parent": {
+              "created-at": "2024-06-23T08:07:03.219789Z",
+              "id": {
+                "type": "ksuid",
+                "value": "2iGw3r6dPjE3GPLugvRXcdhwEW3"
+              }
+            },
+            "invocation": {
+              "created-at": "2024-06-23T08:07:05.219789Z",
+              "id": {
+                "type": "ksuid",
+                "value": "2iGw3r6dPjE3GPLugvRXcdhwEW4"
+              }
+            },
+            "external": {
+              "action-id": {
+                "type": "string",
+                "value": "01J1224V83KZS4487MPF0KN5RB"
+              },
+              "invocation-id": {
+                "type": "string",
+                "value": "01J1224V83KZS4487MPF0KN5RA"
+              }
+            }
+          },
+          "access": {
+            "actor": {
+              "type": "direct",
+              "account": {
+                "id": {
+                  "type": "ksuid",
+                  "value": "2iGw3r6dPjE3GPLugvRXcdhwEVv"
+                },
+                "type": "user",
+                "locale": "en-GB",
+                "tenant": {
+                  "id": {
+                    "type": "ksuid",
+                    "value": "2iGw3r6dPjE3GPLugvRXcdhwEVx"
+                  }
+                },
+                "customer": {
+                  "is-test": false,
+                  "id": {
+                    "type": "ksuid",
+                    "value": "2iGw3r6dPjE3GPLugvRXcdhwEVw"
+                  }
+                }
+              },
+              "authentication": {
+                "session": {
+                  "id": {
+                    "type": "ksuid",
+                    "value": "2iGw3r6dPjE3GPLugvRXcdhwEVz"
+                  },
+                  "type": "simple"
+                },
+                "type": "credentials-based",
+                "token": {
+                  "valid-to": "2024-06-23T08:32:05.219801Z",
+                  "id": {
+                    "type": "ksuid",
+                    "value": "2iGw3r6dPjE3GPLugvRXcdhwEVy"
+                  },
+                  "valid-from": "2024-06-23T08:02:05.219801Z"
+                }
+              }
+            },
+            "authorization": {
+              "roles": {
+                "values": [
+                  {
+                    "name": "user"
+                  }
+                ]
+              }
+            },
+            "origin": {
+              "client-info": {
+                "agent": {
+                  "name": "Apache-HttpAsyncClient",
+                  "version": {
+                    "patch": 1,
+                    "major": 5,
+                    "minor": 2,
+                    "type": "semantic"
+                  },
+                  "class-name": "Special"
+                },
+                "layout-engine": {
+                  "name": "AppleWebKit",
+                  "version": {
+                    "patch": 25,
+                    "major": 800,
+                    "minor": 6,
+                    "type": "semantic"
+                  },
+                  "class-name": "WebKit"
+                },
+                "operating-system": {
+                  "name": "Android (Upside Down Cake)",
+                  "version": {
+                    "type": "simple",
+                    "value": "14"
+                  },
+                  "class-name": "Android"
+                },
+                "device": {
+                  "name": "Pixel 8",
+                  "brand": "Google",
+                  "class-name": "Mobile"
+                }
+              },
+              "ip-address": "127.0.0.1"
+            },
+            "scope": {
+              "container-stack": [
+                {
+                  "id": {
+                    "type": "ksuid",
+                    "value": "2iGw3r6dPjE3GPLugvRXcdhwEW0"
+                  }
+                },
+                {
+                  "id": {
+                    "type": "ksuid",
+                    "value": "2iGw3r6dPjE3GPLugvRXcdhwEW1"
+                  }
+                }
+              ]
+            },
+            "is-test": false,
+            "type": "authenticated"
+          },
+          "toggles": {
+            "values": []
+          },
           "specified-locale": "en-US"
         }
+        ```
+      value: eyJ0cmFjZSI6eyJvcmlnaW5hdGluZyI6eyJjcmVhdGVkLWF0IjoiMjAyNC0wNi0yM1QwODowNzowMi4yMTk3ODlaIiwiaWQiOnsidHlwZSI6ImtzdWlkIiwidmFsdWUiOiIyaUd3M3I2ZFBqRTNHUEx1Z3ZSWGNkaHdFVzIifX0sInBhcmVudCI6eyJjcmVhdGVkLWF0IjoiMjAyNC0wNi0yM1QwODowNzowMy4yMTk3ODlaIiwiaWQiOnsidHlwZSI6ImtzdWlkIiwidmFsdWUiOiIyaUd3M3I2ZFBqRTNHUEx1Z3ZSWGNkaHdFVzMifX0sImludm9jYXRpb24iOnsiY3JlYXRlZC1hdCI6IjIwMjQtMDYtMjNUMDg6MDc6MDUuMjE5Nzg5WiIsImlkIjp7InR5cGUiOiJrc3VpZCIsInZhbHVlIjoiMmlHdzNyNmRQakUzR1BMdWd2UlhjZGh3RVc0In19LCJleHRlcm5hbCI6eyJhY3Rpb24taWQiOnsidHlwZSI6InN0cmluZyIsInZhbHVlIjoiMDFKMTIyNFY4M0taUzQ0ODdNUEYwS041UkIifSwiaW52b2NhdGlvbi1pZCI6eyJ0eXBlIjoic3RyaW5nIiwidmFsdWUiOiIwMUoxMjI0VjgzS1pTNDQ4N01QRjBLTjVSQSJ9fX0sImFjY2VzcyI6eyJhY3RvciI6eyJ0eXBlIjoiZGlyZWN0IiwiYWNjb3VudCI6eyJpZCI6eyJ0eXBlIjoia3N1aWQiLCJ2YWx1ZSI6IjJpR3czcjZkUGpFM0dQTHVndlJYY2Rod0VWdiJ9LCJ0eXBlIjoidXNlciIsImxvY2FsZSI6ImVuLUdCIiwidGVuYW50Ijp7ImlkIjp7InR5cGUiOiJrc3VpZCIsInZhbHVlIjoiMmlHdzNyNmRQakUzR1BMdWd2UlhjZGh3RVZ4In19LCJjdXN0b21lciI6eyJpcy10ZXN0IjpmYWxzZSwiaWQiOnsidHlwZSI6ImtzdWlkIiwidmFsdWUiOiIyaUd3M3I2ZFBqRTNHUEx1Z3ZSWGNkaHdFVncifX19LCJhdXRoZW50aWNhdGlvbiI6eyJzZXNzaW9uIjp7ImlkIjp7InR5cGUiOiJrc3VpZCIsInZhbHVlIjoiMmlHdzNyNmRQakUzR1BMdWd2UlhjZGh3RVZ6In0sInR5cGUiOiJzaW1wbGUifSwidHlwZSI6ImNyZWRlbnRpYWxzLWJhc2VkIiwidG9rZW4iOnsidmFsaWQtdG8iOiIyMDI0LTA2LTIzVDA4OjMyOjA1LjIxOTgwMVoiLCJpZCI6eyJ0eXBlIjoia3N1aWQiLCJ2YWx1ZSI6IjJpR3czcjZkUGpFM0dQTHVndlJYY2Rod0VWeSJ9LCJ2YWxpZC1mcm9tIjoiMjAyNC0wNi0yM1QwODowMjowNS4yMTk4MDFaIn19fSwiYXV0aG9yaXphdGlvbiI6eyJyb2xlcyI6eyJ2YWx1ZXMiOlt7Im5hbWUiOiJ1c2VyIn1dfX0sIm9yaWdpbiI6eyJjbGllbnQtaW5mbyI6eyJhZ2VudCI6eyJuYW1lIjoiQXBhY2hlLUh0dHBBc3luY0NsaWVudCIsInZlcnNpb24iOnsicGF0Y2giOjEsIm1ham9yIjo1LCJtaW5vciI6MiwidHlwZSI6InNlbWFudGljIn0sImNsYXNzLW5hbWUiOiJTcGVjaWFsIn0sImxheW91dC1lbmdpbmUiOnsibmFtZSI6IkFwcGxlV2ViS2l0IiwidmVyc2lvbiI6eyJwYXRjaCI6MjUsIm1ham9yIjo4MDAsIm1pbm9yIjo2LCJ0eXBlIjoic2VtYW50aWMifSwiY2xhc3MtbmFtZSI6IldlYktpdCJ9LCJvcGVyYXRpbmctc3lzdGVtIjp7Im5hbWUiOiJBbmRyb2lkIChVcHNpZGUgRG93biBDYWtlKSIsInZlcnNpb24iOnsidHlwZSI6InNpbXBsZSIsInZhbHVlIjoiMTQifSwiY2xhc3MtbmFtZSI6IkFuZHJvaWQifSwiZGV2aWNlIjp7Im5hbWUiOiJQaXhlbCA4IiwiYnJhbmQiOiJHb29nbGUiLCJjbGFzcy1uYW1lIjoiTW9iaWxlIn19LCJpcC1hZGRyZXNzIjoiMTI3LjAuMC4xIn0sInNjb3BlIjp7ImNvbnRhaW5lci1zdGFjayI6W3siaWQiOnsidHlwZSI6ImtzdWlkIiwidmFsdWUiOiIyaUd3M3I2ZFBqRTNHUEx1Z3ZSWGNkaHdFVzAifX0seyJpZCI6eyJ0eXBlIjoia3N1aWQiLCJ2YWx1ZSI6IjJpR3czcjZkUGpFM0dQTHVndlJYY2Rod0VXMSJ9fV19LCJpcy10ZXN0IjpmYWxzZSwidHlwZSI6ImF1dGhlbnRpY2F0ZWQifSwidG9nZ2xlcyI6eyJ2YWx1ZXMiOltdfSwic3BlY2lmaWVkLWxvY2FsZSI6ImVuLVVTIn0
 
     SuccessWithoutInformation:
       summary: A successful acknowledgement without a return value.

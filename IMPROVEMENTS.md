@@ -7,7 +7,7 @@ Modular monolith template demonstrating event-driven architecture with a simplif
 
 | Dimension | Rating | Notes |
 |-----------|--------|-------|
-| Build system | A | Gradle 9.8.0, 88+ dependency refs, excellent |
+| Build system | A | Gradle 9.8.0, 83 dependency refs (75 libraries, 8 plugins), excellent |
 | Code quality | A | Strong DDD, clean architecture, hexagonal adapters |
 | Test coverage | B+ | 29 test files across 47 modules, contract + integration tests |
 | Documentation | A- | Comprehensive README with scenario, module types, completion status |

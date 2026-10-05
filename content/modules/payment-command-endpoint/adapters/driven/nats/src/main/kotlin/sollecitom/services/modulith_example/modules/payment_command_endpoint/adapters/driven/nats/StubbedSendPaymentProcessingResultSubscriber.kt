@@ -13,5 +13,5 @@ class StubbedSendPaymentProcessingResultSubscriber(private val awaitResult: susp
 
     override fun SendPaymentCommandReceived.processingResult(): Deferred<PaymentProcessingResult> = scope.async(start = CoroutineStart.UNDISPATCHED) { awaitResult() }
 
-    fun stop() = scope.cancel()
+    override suspend fun stop() = scope.cancel()
 }
