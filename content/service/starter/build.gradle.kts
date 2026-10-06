@@ -56,6 +56,8 @@ configure<JibDockerBuildConvention.Extension> {
         "-XX:MaxRAMPercentage=$maxRamPercentage",
         // Low-latency GC (generational ZGC on JDK 25+).
         "-XX:+UseZGC",
+        // Smaller object headers (JDK 25+), so the same heap holds more.
+        "-XX:+UseCompactObjectHeaders",
         // Keep stack traces for hot, repeated exceptions in production logs.
         "-XX:-OmitStackTraceInFastThrow"
     )
