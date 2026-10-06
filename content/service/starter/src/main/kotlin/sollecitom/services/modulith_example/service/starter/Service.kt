@@ -11,6 +11,7 @@ import sollecitom.libs.pillar.service.logging.logServiceStopped
 import sollecitom.libs.pillar.web.api.utils.api.EndpointHttpDrivingAdapter
 import sollecitom.libs.pillar.web.api.utils.api.create
 import sollecitom.libs.swissknife.configuration.utils.configurationPropertiesUnderRoot
+import sollecitom.libs.swissknife.pulsar.utils.PulsarClientSettings
 import sollecitom.libs.swissknife.core.domain.identity.factory.invoke
 import sollecitom.libs.swissknife.core.domain.text.Name
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
@@ -95,7 +96,7 @@ class Service(private val environment: Environment, coreDataGenerators: CoreData
     private fun pulsarClient(environment: Environment): ClientAndCheck<PulsarClient> {
 
         val pulsarBrokerServiceUrl = ServiceProperties.pulsarBrokerUrl(environment)
-        val config = environment.configurationPropertiesUnderRoot(root = ServiceProperties.pulsarConfigurationRoot)
+        val config = environment.configurationPropertiesUnderRoot(root = ServiceProperties.pulsarConfigurationRoot, knownNames = PulsarClientSettings.names)
         val client = PulsarClient.builder()
             .connectionTimeout(30, SECONDS)
             .operationTimeout(30, SECONDS)
