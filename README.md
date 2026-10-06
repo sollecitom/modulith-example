@@ -70,6 +70,7 @@ There are different module types, which are the archetypes for every sort of com
 - An [event processor](#event-processor) that processes all the events for an account, and publishes the results of the processing.
 - If the current balance wouldn't cover a payment, the `send-payment` command is rejected.
 - If the target account is equal to the source account, the `send-payment` command is rejected.
+- If the source account doesn't belong to the caller's customer, the `send-payment` command is rejected.
 
 #### To Do
 

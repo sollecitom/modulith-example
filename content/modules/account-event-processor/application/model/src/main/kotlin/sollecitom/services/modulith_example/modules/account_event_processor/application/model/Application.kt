@@ -46,6 +46,7 @@ private class ApplicationImplementation(private val publisher: MessagePublisher<
     private suspend fun processSendPaymentCommand(message: ReceivedMessage<SendPaymentCommandReceived>) = message.processAsCompositeEvent { data, event ->
 
         // TODO if target account or source account don't exist, publish AccountNotFoundError
+        // TODO if the source account doesn't belong to the caller's customer (from the event's invocation context), publish NotAccountOwner
         // TODO if there's balance, publish outbound payment
         // TODO if there's no balance, publish NotEnoughBalance
     }
