@@ -1,6 +1,5 @@
 package sollecitom.services.modulith_example.service.test.specification
 
-import kotlinx.coroutines.runBlocking
 import org.apache.pulsar.client.admin.PulsarAdmin
 import org.testcontainers.pulsar.PulsarContainer
 import sollecitom.libs.pillar.acme.conventions.CompanyConventions
@@ -23,13 +22,13 @@ interface ServiceTestSpecification : CoreDataGenerator, MonitoringEndpointsTestS
     override val timeout: Duration get() = 30.seconds
     override val accountEventsTopic get() = "persistent://acme/banking/account-events".let(Topic::parse)
 
-    fun specificationBeforeAll() = runBlocking {
+    fun specificationBeforeAll() {
 //        openTelemetryCollector.start()
         pulsar.start()
         pulsar.initializeTopicsAndSchemata()
     }
 
-    fun specificationAfterAll() = runBlocking {
+    fun specificationAfterAll() {
         pulsar.stop()
 //        openTelemetryCollector.stop()
     }

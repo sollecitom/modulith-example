@@ -105,11 +105,15 @@ components:
     invocationContext:
       name: x-acme-invocation-context
       in: header
-      description: Invocation context from the API gateway, as the base64url encoding (without padding) of its UTF-8 JSON. The JSON follows the schema at /json/schemas/acme/common/correlation/context/InvocationContext.json
+      description: Invocation context from the API gateway, as the base64url encoding (without padding) of its UTF-8 JSON
       required: true
       schema:
         type: string
         pattern: '^[A-Za-z0-9_-]+$'
+        contentEncoding: base64url
+        contentMediaType: application/json
+        contentSchema:
+          $ref: '/json/schemas/acme/common/correlation/context/InvocationContext.json'
       examples:
         InvocationContext:
           $ref: '#/components/examples/InvocationContext'
