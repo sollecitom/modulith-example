@@ -29,9 +29,9 @@ dependencies {
 }
 
 val serviceName = "modulith-example-service"
-val dockerRemoteRepository: String by rootProject.extra
-val dockerBaseImageParam: String by rootProject.extra
-val gitVersion: VersionDetails by rootProject.extra
+val dockerRemoteRepository = rootProject.extra["dockerRemoteRepository"] as String
+val dockerBaseImageParam = rootProject.extra["dockerBaseImageParam"] as String
+val gitVersion = rootProject.extra["gitVersion"] as VersionDetails
 val mainAppPort = "8081"
 val healthAppPort = "8082"
 val tmpVolume = "/tmp"
