@@ -57,7 +57,7 @@ private object ResultJsonSerde : JsonSerde.SchemaAware<ApplicationResult> {
             false -> when (val type = value.getRequiredString(Fields.TYPE)) {
                 Types.PROCESSED_SUCCESSFULLY -> ProcessedSuccessfully.asResult()
                 Types.INSUFFICIENT_BALANCE_ON_SOURCE_ACCOUNT -> InsufficientBalanceOnSourceAccount.asResult()
-                Types.NONEXISTENT_ACCOUNT -> NonexistentAccount(value.getValue(Fields.ACCOUNT, AccountReference.jsonSerde)).asResult()
+                Types.NONEXISTENT_ACCOUNT -> value.getValue(Fields.ACCOUNT, AccountReference.jsonSerde).let(::NonexistentAccount).asResult()
                 else -> error("Invalid successful application result type $type")
             }
         }
