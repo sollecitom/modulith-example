@@ -12,7 +12,8 @@ import sollecitom.libs.pillar.web.api.utils.api.EndpointHttpDrivingAdapter
 import sollecitom.libs.pillar.web.api.utils.api.create
 import sollecitom.libs.swissknife.configuration.utils.configurationPropertiesUnderRoot
 import sollecitom.libs.swissknife.pulsar.utils.PulsarClientSettings
-import sollecitom.libs.swissknife.core.domain.identity.factory.invoke
+import sollecitom.libs.swissknife.core.domain.identity.Id
+import sollecitom.libs.swissknife.core.domain.identity.fromString
 import sollecitom.libs.swissknife.core.domain.text.Name
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
 import sollecitom.libs.swissknife.core.utils.provider
@@ -67,8 +68,8 @@ class Service(private val environment: Environment, coreDataGenerators: CoreData
             module.start()
             logger.info { "Started module '${module.name.value}'" }
         }
-        healthHttpDrivingAdapter.start()
         mainHttpDrivingAdapter.start()
+        healthHttpDrivingAdapter.start()
         logServiceStarted()
     }
 
@@ -82,6 +83,7 @@ class Service(private val environment: Environment, coreDataGenerators: CoreData
         }
         healthHttpDrivingAdapter.stop()
         pulsarClient.value.close()
+        meterRegistry.close()
         logServiceStopped()
     }
 
@@ -105,7 +107,7 @@ class Service(private val environment: Environment, coreDataGenerators: CoreData
         return ClientAndCheck(client, readinessCheck)
     }
 
-    private fun serviceInstanceInfo() = ServiceInfo(instanceId = newId(), name = serviceName)
+    private fun serviceInstanceInfo() = ServiceProperties.instanceNodeName(environment).value.let { Id.fromString(it) }.let { ServiceInfo(instanceId = it, name = serviceName) }
 
     companion object : Loggable() {
 

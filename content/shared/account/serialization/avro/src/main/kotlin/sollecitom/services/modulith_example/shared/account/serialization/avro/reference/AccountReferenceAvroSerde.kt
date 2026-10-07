@@ -20,21 +20,17 @@ private object AccountReferenceAvroSerde : AvroSerde<AccountReference> {
         val record = when (value) {
             is InternalAccountNumber -> InternalAccountNumber.avroSerde.serialize(value)
         }
-        setRecordInUnion(value.type(), record)
+        setRecordInUnion(record)
     }
 
-    override fun deserialize(value: GenericRecord) = value.getRecordFromUnion { unionTypeName, unionRecord ->
-        when (unionTypeName) {
+    override fun deserialize(value: GenericRecord) = value.getRecordFromUnion { branchName, unionRecord ->
+        when (branchName) {
             Types.INTERNAL_ACCOUNT_REFERENCE -> unionRecord.deserializeWith(InternalAccountNumber.avroSerde)
-            else -> error("Unknown account reference type $unionTypeName")
+            else -> error("Unknown account reference type $branchName")
         }
     }
 
-    private fun AccountReference.type(): String = when (this) {
-        is InternalAccountNumber -> Types.INTERNAL_ACCOUNT_REFERENCE
-    }
-
     private object Types {
-        const val INTERNAL_ACCOUNT_REFERENCE = "internal_account_reference"
+        const val INTERNAL_ACCOUNT_REFERENCE = "InternalAccountNumber"
     }
 }

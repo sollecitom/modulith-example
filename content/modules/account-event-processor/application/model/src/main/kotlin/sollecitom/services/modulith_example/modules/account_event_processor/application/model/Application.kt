@@ -2,6 +2,7 @@ package sollecitom.services.modulith_example.modules.account_event_processor.app
 
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
 import sollecitom.libs.swissknife.correlation.core.domain.context.InvocationContext
+import sollecitom.libs.swissknife.ddd.domain.Happening
 import sollecitom.libs.swissknife.logger.core.loggable.Loggable
 import sollecitom.libs.swissknife.messaging.domain.event.processing.EventProcessingResult
 import sollecitom.libs.swissknife.messaging.domain.event.processing.EventProcessingResult.NoOp
@@ -12,15 +13,17 @@ import sollecitom.libs.swissknife.messaging.domain.message.into
 import sollecitom.libs.swissknife.messaging.domain.message.properties.MessagePropertyNames
 import sollecitom.libs.swissknife.messaging.domain.message.publisher.MessagePublisher
 import sollecitom.services.modulith_example.shared.account.domain.model.event.*
-import sollecitom.services.modulith_example.shared.account.domain.model.event.SendPaymentCommand.AccountNotFoundError
-import sollecitom.services.modulith_example.shared.account.domain.model.event.SendPaymentCommand.InsufficientBalanceError
 
 interface Application : ProcessAccountEvent {
+
+    val handledTypes: Set<Happening.Type>
 
     companion object
 }
 
 private class ApplicationImplementation(private val publisher: MessagePublisher<AccountEvent>, coreDataGenerator: CoreDataGenerator, messagePropertyNames: MessagePropertyNames) : Application, MessagePropertyNames by messagePropertyNames, CoreDataGenerator by coreDataGenerator {
+
+    override val handledTypes = setOf(Deposit.type, SendPaymentCommand.type, InboundPayment.type, OutboundPayment.type)
 
     context(_: InvocationContext<*>)
     override suspend fun processAccountEvent(message: ReceivedMessage<AccountEvent>) = when (val type = message.eventType()) {
@@ -28,8 +31,6 @@ private class ApplicationImplementation(private val publisher: MessagePublisher<
         SendPaymentCommand.type -> processSendPaymentCommand(message.into())
         InboundPayment.type -> processInboundPayment(message.into())
         OutboundPayment.type -> processOutboundPayment(message.into())
-        AccountNotFoundError.type -> NoOp
-        InsufficientBalanceError.type -> NoOp
         else -> {
             logger.warn { "Unexpected account event type: $type" }
             NoOp

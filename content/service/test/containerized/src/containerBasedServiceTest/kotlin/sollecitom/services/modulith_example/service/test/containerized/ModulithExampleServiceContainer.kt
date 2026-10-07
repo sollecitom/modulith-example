@@ -1,11 +1,8 @@
 package sollecitom.services.modulith_example.service.test.containerized
 
-import com.github.dockerjava.api.model.AuthConfig
-import org.apache.http.auth.UsernamePasswordCredentials
 import org.testcontainers.containers.GenericContainer
 import org.testcontainers.pulsar.PulsarContainer
 import org.testcontainers.utility.DockerImageName
-import org.testcontainers.utility.RegistryAuthLocator
 import sollecitom.libs.pillar.acme.conventions.CompanyConventions
 import sollecitom.libs.swissknife.core.domain.identity.factory.invoke
 import sollecitom.libs.swissknife.core.domain.networking.Port
@@ -23,7 +20,6 @@ import sollecitom.libs.swissknife.web.service.domain.WebInterface
 import sollecitom.libs.swissknife.web.service.domain.WithWebInterface
 import sollecitom.services.modulith_example.configuration.ServiceProperties
 import sollecitom.services.modulith_example.service.test.containerized.ModulithExampleServiceContainer.Companion.DEFAULT_PROJECT_PATH
-import sollecitom.services.modulith_example.service.test.containerized.ModulithExampleServiceContainer.Companion.IMAGE_NAME
 
 
 context(ids: UniqueIdGenerator, random: RandomGenerator, conventions: CompanyConventions)
@@ -48,7 +44,6 @@ fun newModulithExampleServiceContainer(pulsar: PulsarContainer, servicePort: Int
     val env = (httpServerEnv + pulsarEnv + loggingEnv + serviceEnv)
     val imageTag = imageTag()
     val imageRegistry = imageRegistry()
-    val credentials = registryCredentials()
     val projectPath = System.getenv("OCI_PROJECT_PATH") ?: DEFAULT_PROJECT_PATH
 
     return ModulithExampleServiceContainer(
@@ -60,20 +55,6 @@ fun newModulithExampleServiceContainer(pulsar: PulsarContainer, servicePort: Int
     ).withExposedPorts(servicePort, healthPort)
         .withEnv(env)
         .waitingForSuccessfulReadinessCheck(healthPort)
-        .withRegistryAuthentication(credentials)
-}
-
-private fun ModulithExampleServiceContainer.withRegistryAuthentication(credentials: UsernamePasswordCredentials): ModulithExampleServiceContainer {
-    val instance = RegistryAuthLocator.instance()
-    val imageName = DockerImageName.parse("$repository/$projectPath/$IMAGE_NAME:$tag")
-    instance.lookupAuthConfig(imageName, AuthConfig().withRegistryAddress(repository).withUsername(credentials.userName).withPassword(credentials.password))
-    return this
-}
-
-private fun registryCredentials(): UsernamePasswordCredentials {
-    val username = System.getenv("CI_REGISTRY_USER") ?: ""
-    val password = System.getenv("CI_REGISTRY_PASSWORD") ?: ""
-    return UsernamePasswordCredentials(username, password)
 }
 
 private fun imageTag(): String = System.getenv("OCI_IMAGE_TAG") ?: ModulithExampleServiceContainer.DEFAULT_IMAGE_TAG

@@ -24,36 +24,27 @@ private object AccountEventDataAvroSerde : AvroSerde<AccountEventData> {
             is SendPaymentCommand.InsufficientBalanceError -> SendPaymentCommand.InsufficientBalanceError.avroSerde.serialize(value)
             is SendPaymentCommand.AccountNotFoundError -> SendPaymentCommand.AccountNotFoundError.avroSerde.serialize(value)
         }
-        setRecordInUnion(value.type(), record)
+        setRecordInUnion(record)
     }
 
-    override fun deserialize(value: GenericRecord) = value.getRecordFromUnion { unionTypeName, unionRecord ->
-        when (unionTypeName) {
+    override fun deserialize(value: GenericRecord) = value.getRecordFromUnion { branchName, unionRecord ->
+        when (branchName) {
             Types.DEPOSIT -> unionRecord.deserializeWith(Deposit.avroSerde)
             Types.INBOUND_PAYMENT -> unionRecord.deserializeWith(InboundPayment.avroSerde)
             Types.OUTBOUND_PAYMENT -> unionRecord.deserializeWith(OutboundPayment.avroSerde)
             Types.SEND_PAYMENT_COMMAND_RECEIVED -> unionRecord.deserializeWith(SendPaymentCommand.avroSerde)
             Types.ACCOUNT_NOT_FOUND_ERROR_FOR_SEND_PAYMENT_COMMAND_RECEIVED -> unionRecord.deserializeWith(SendPaymentCommand.AccountNotFoundError.avroSerde)
             Types.INSUFFICIENT_BALANCE_ERROR_FOR_SEND_PAYMENT_COMMAND_RECEIVED -> unionRecord.deserializeWith(SendPaymentCommand.InsufficientBalanceError.avroSerde)
-            else -> error("Unknown account event data type $unionTypeName")
+            else -> error("Unknown account event data type $branchName")
         }
     }
 
-    private fun AccountEventData.type(): String = when (this) {
-        is Deposit -> Types.DEPOSIT
-        is InboundPayment -> Types.INBOUND_PAYMENT
-        is OutboundPayment -> Types.OUTBOUND_PAYMENT
-        is SendPaymentCommand -> Types.SEND_PAYMENT_COMMAND_RECEIVED
-        is SendPaymentCommand.AccountNotFoundError -> Types.ACCOUNT_NOT_FOUND_ERROR_FOR_SEND_PAYMENT_COMMAND_RECEIVED
-        is SendPaymentCommand.InsufficientBalanceError -> Types.INSUFFICIENT_BALANCE_ERROR_FOR_SEND_PAYMENT_COMMAND_RECEIVED
-    }
-
     private object Types {
-        const val SEND_PAYMENT_COMMAND_RECEIVED = "send-payment-command-received"
-        const val INSUFFICIENT_BALANCE_ERROR_FOR_SEND_PAYMENT_COMMAND_RECEIVED = "insufficient-balance-error-for-send-payment-command-received"
-        const val ACCOUNT_NOT_FOUND_ERROR_FOR_SEND_PAYMENT_COMMAND_RECEIVED = "account-not-found-error-for-send-payment-command-received"
-        const val DEPOSIT = "deposit"
-        const val OUTBOUND_PAYMENT = "outbound-payment"
-        const val INBOUND_PAYMENT = "inbound-payment"
+        const val SEND_PAYMENT_COMMAND_RECEIVED = "SendPaymentCommandReceived"
+        const val INSUFFICIENT_BALANCE_ERROR_FOR_SEND_PAYMENT_COMMAND_RECEIVED = "SendPaymentCommandReceived_InsufficientBalanceError"
+        const val ACCOUNT_NOT_FOUND_ERROR_FOR_SEND_PAYMENT_COMMAND_RECEIVED = "SendPaymentCommandReceived_AccountNotFoundError"
+        const val DEPOSIT = "Deposit"
+        const val OUTBOUND_PAYMENT = "OutboundPayment"
+        const val INBOUND_PAYMENT = "InboundPayment"
     }
 }
