@@ -13,8 +13,8 @@ object AccountAvroSchemas : AvroSchemaCatalogueTemplate(AccountAvroNamespace.NAM
     val internalAccountNumber by lazy { getSchema(name = "InternalAccountNumber") }
     val accountReference by lazy { getSchema(name = "AccountReference", dependencies = setOf(internalAccountNumber)) }
 
-    override val nestedContainers: Set<AvroSchemaContainer> = setOf(Event)
-    override val all: Sequence<Schema> = sequenceOf(internalAccountNumber, accountReference)
+    override val nestedContainers: Set<AvroSchemaContainer> get() = setOf(Event)
+    override val all: Sequence<Schema> get() = sequenceOf(internalAccountNumber, accountReference)
 
     object Event : AvroSchemaCatalogueTemplate("${AccountAvroNamespace.NAME}.event") {
 
@@ -38,7 +38,7 @@ object AccountAvroSchemas : AvroSchemaCatalogueTemplate(AccountAvroNamespace.NAM
         }
         val event by lazy { getSchema(name = "AccountEvent", dependencies = setOf(eventData, EventMetadata.avroSchema)) }
 
-        override val all: Sequence<Schema> = sequenceOf(
+        override val all: Sequence<Schema> get() = sequenceOf(
             sendPaymentCommandReceived,
             insufficientBalanceErrorForSendPaymentCommandReceived,
             accountNotFoundErrorForSendPaymentCommandReceived,
