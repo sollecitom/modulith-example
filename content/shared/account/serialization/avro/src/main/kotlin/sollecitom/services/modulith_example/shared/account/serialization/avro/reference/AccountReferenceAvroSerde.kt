@@ -4,7 +4,7 @@ import org.apache.avro.generic.GenericRecord
 import sollecitom.libs.swissknife.avro.serialization.utils.AvroSerde
 import sollecitom.libs.swissknife.avro.serialization.utils.buildRecord
 import sollecitom.libs.swissknife.avro.serialization.utils.deserializeWith
-import sollecitom.libs.swissknife.avro.serialization.utils.getRecordFromUnion
+import sollecitom.libs.swissknife.avro.serialization.utils.getEnvelope
 import sollecitom.services.modulith_example.shared.account.domain.model.reference.AccountReference
 import sollecitom.services.modulith_example.shared.account.domain.model.reference.InternalAccountNumber
 import sollecitom.services.modulith_example.shared.account.serialization.avro.AccountAvroSchemas
@@ -20,10 +20,10 @@ private object AccountReferenceAvroSerde : AvroSerde<AccountReference> {
         val record = when (value) {
             is InternalAccountNumber -> InternalAccountNumber.avroSerde.serialize(value)
         }
-        setRecordInUnion(record)
+        setEnvelope(record)
     }
 
-    override fun deserialize(value: GenericRecord) = value.getRecordFromUnion { branchName, unionRecord ->
+    override fun deserialize(value: GenericRecord) = value.getEnvelope { branchName, unionRecord ->
         when (branchName) {
             Types.INTERNAL_ACCOUNT_REFERENCE -> unionRecord.deserializeWith(InternalAccountNumber.avroSerde)
             else -> error("Unknown account reference type $branchName")

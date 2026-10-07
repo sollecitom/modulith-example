@@ -10,5 +10,7 @@ dependencies {
     api(libs.swissknife.messaging.domain)
 
     implementation(projects.sharedAccountMessagingConverter)
+    api(libs.pillar.messaging.domain)
+
     implementation(libs.swissknife.logger.core)
 }

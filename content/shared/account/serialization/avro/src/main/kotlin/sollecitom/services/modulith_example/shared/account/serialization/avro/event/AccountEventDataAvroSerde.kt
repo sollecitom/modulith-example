@@ -4,7 +4,7 @@ import org.apache.avro.generic.GenericRecord
 import sollecitom.libs.swissknife.avro.serialization.utils.AvroSerde
 import sollecitom.libs.swissknife.avro.serialization.utils.buildRecord
 import sollecitom.libs.swissknife.avro.serialization.utils.deserializeWith
-import sollecitom.libs.swissknife.avro.serialization.utils.getRecordFromUnion
+import sollecitom.libs.swissknife.avro.serialization.utils.getEnvelope
 import sollecitom.services.modulith_example.shared.account.domain.model.event.*
 import sollecitom.services.modulith_example.shared.account.serialization.avro.AccountAvroSchemas
 
@@ -24,10 +24,10 @@ private object AccountEventDataAvroSerde : AvroSerde<AccountEventData> {
             is SendPaymentCommand.InsufficientBalanceError -> SendPaymentCommand.InsufficientBalanceError.avroSerde.serialize(value)
             is SendPaymentCommand.AccountNotFoundError -> SendPaymentCommand.AccountNotFoundError.avroSerde.serialize(value)
         }
-        setRecordInUnion(record)
+        setEnvelope(record)
     }
 
-    override fun deserialize(value: GenericRecord) = value.getRecordFromUnion { branchName, unionRecord ->
+    override fun deserialize(value: GenericRecord) = value.getEnvelope { branchName, unionRecord ->
         when (branchName) {
             Types.DEPOSIT -> unionRecord.deserializeWith(Deposit.avroSerde)
             Types.INBOUND_PAYMENT -> unionRecord.deserializeWith(InboundPayment.avroSerde)

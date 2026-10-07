@@ -12,8 +12,6 @@ import sollecitom.libs.pillar.web.api.utils.api.EndpointHttpDrivingAdapter
 import sollecitom.libs.pillar.web.api.utils.api.create
 import sollecitom.libs.swissknife.configuration.utils.configurationPropertiesUnderRoot
 import sollecitom.libs.swissknife.pulsar.utils.PulsarClientSettings
-import sollecitom.libs.swissknife.core.domain.identity.Id
-import sollecitom.libs.swissknife.core.domain.identity.fromString
 import sollecitom.libs.swissknife.core.domain.text.Name
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
 import sollecitom.libs.swissknife.core.utils.provider
@@ -25,6 +23,7 @@ import sollecitom.libs.swissknife.readiness.domain.ClientAndCheck
 import sollecitom.libs.swissknife.readiness.domain.checkReadiness
 import sollecitom.libs.swissknife.readiness.domain.ifFailed
 import sollecitom.libs.swissknife.service.domain.ServiceInfo
+import sollecitom.libs.swissknife.service.domain.fromEnvironment
 import sollecitom.libs.swissknife.service.domain.ServiceModule
 import sollecitom.libs.swissknife.service.domain.ServiceModuleWithHttpDrivingAdapter
 import sollecitom.libs.swissknife.service.readiness.http4k.http4kReadinessCheck
@@ -47,7 +46,7 @@ class Service(private val environment: Environment, coreDataGenerators: CoreData
 
     //    private val openTelemetry = OpenTelemetryModule.withOpenTelemetryEndpointUrl(endpointUrl = openTelemetryEndpointUrl(environment))
     private val meterRegistry = prometheusMeterRegistry()
-    private val instanceInfo = serviceInstanceInfo()
+    private val instanceInfo = ServiceInfo.fromEnvironment(environment, serviceName)
     private val pulsarClient = pulsarClient(environment)
 
     private val modules = with(ServiceModule) {
@@ -106,8 +105,6 @@ class Service(private val environment: Environment, coreDataGenerators: CoreData
         val readinessCheck = PulsarReadinessCheck(client)
         return ClientAndCheck(client, readinessCheck)
     }
-
-    private fun serviceInstanceInfo() = ServiceProperties.instanceNodeName(environment).value.let { Id.fromString(it) }.let { ServiceInfo(instanceId = it, name = serviceName) }
 
     companion object : Loggable() {
 

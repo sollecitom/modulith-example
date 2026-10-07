@@ -22,7 +22,7 @@ private class AccountEventProcessorModule(pulsarClient: PulsarClient, serviceInf
     private val instanceInfo = serviceInfo.withModuleName(moduleName)
     private val accountEvents = MessageConnector.accountEvents(pulsarClient, instanceInfo)
     private val application = Application.create(publisher = accountEvents)
-    private val processor = EventProcessor.withMessageConnector(connector = accountEvents, handledTypes = application.handledTypes, propertyNames = this) { event -> application.processAccountEvent(event) }
+    private val processor = EventProcessor.withMessageConnector(connector = accountEvents, handler = application, propertyNames = this)
 
     override suspend fun start() {
         accountEvents.start()

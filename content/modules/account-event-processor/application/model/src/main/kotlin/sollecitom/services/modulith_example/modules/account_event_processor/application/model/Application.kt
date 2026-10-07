@@ -1,41 +1,37 @@
 package sollecitom.services.modulith_example.modules.account_event_processor.application.model
 
+import sollecitom.libs.pillar.messaging.domain.event.processing.EventHandler
+import sollecitom.libs.pillar.messaging.domain.event.processing.byType
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
 import sollecitom.libs.swissknife.correlation.core.domain.context.InvocationContext
-import sollecitom.libs.swissknife.ddd.domain.Happening
-import sollecitom.libs.swissknife.logger.core.loggable.Loggable
-import sollecitom.libs.swissknife.messaging.domain.event.processing.EventProcessingResult
-import sollecitom.libs.swissknife.messaging.domain.event.processing.EventProcessingResult.NoOp
+import sollecitom.libs.swissknife.messaging.domain.event.processing.ProcessEvent
 import sollecitom.libs.swissknife.messaging.domain.event.processing.processAsCompositeEvent
-import sollecitom.libs.swissknife.messaging.domain.event.utils.eventType
 import sollecitom.libs.swissknife.messaging.domain.message.ReceivedMessage
 import sollecitom.libs.swissknife.messaging.domain.message.into
 import sollecitom.libs.swissknife.messaging.domain.message.properties.MessagePropertyNames
 import sollecitom.libs.swissknife.messaging.domain.message.publisher.MessagePublisher
 import sollecitom.services.modulith_example.shared.account.domain.model.event.*
 
-interface Application : ProcessAccountEvent {
-
-    val handledTypes: Set<Happening.Type>
+interface Application : EventHandler<AccountEvent> {
 
     companion object
 }
 
 private class ApplicationImplementation(private val publisher: MessagePublisher<AccountEvent>, coreDataGenerator: CoreDataGenerator, messagePropertyNames: MessagePropertyNames) : Application, MessagePropertyNames by messagePropertyNames, CoreDataGenerator by coreDataGenerator {
 
-    override val handledTypes = setOf(Deposit.type, SendPaymentCommand.type, InboundPayment.type, OutboundPayment.type)
+    private val handler = EventHandler.byType<AccountEvent>(
+        mapOf(
+            Deposit.type to ProcessEvent { message -> processDeposit(message.into()) },
+            SendPaymentCommand.type to ProcessEvent { message -> processSendPaymentCommand(message.into()) },
+            InboundPayment.type to ProcessEvent { message -> processInboundPayment(message.into()) },
+            OutboundPayment.type to ProcessEvent { message -> processOutboundPayment(message.into()) },
+        )
+    )
+
+    override val handledTypes get() = handler.handledTypes
 
     context(_: InvocationContext<*>)
-    override suspend fun processAccountEvent(message: ReceivedMessage<AccountEvent>) = when (val type = message.eventType()) {
-        Deposit.type -> processDeposit(message.into())
-        SendPaymentCommand.type -> processSendPaymentCommand(message.into())
-        InboundPayment.type -> processInboundPayment(message.into())
-        OutboundPayment.type -> processOutboundPayment(message.into())
-        else -> {
-            logger.warn { "Unexpected account event type: $type" }
-            NoOp
-        }
-    }
+    override suspend fun invoke(event: ReceivedMessage<AccountEvent>) = handler(event)
 
     context(_: InvocationContext<*>)
     private suspend fun processDeposit(message: ReceivedMessage<DepositEvent>) = message.processAsCompositeEvent { data, event ->
@@ -64,16 +60,6 @@ private class ApplicationImplementation(private val publisher: MessagePublisher<
         // TODO decrease balance (already checked)
         // TODO publish inbound payment (which will be processed as inbound on another partition)
     }
-
-    companion object : Loggable()
-}
-
-fun interface ProcessAccountEvent {
-
-    context(_: InvocationContext<*>)
-    suspend fun processAccountEvent(message: ReceivedMessage<AccountEvent>): EventProcessingResult
-
-    companion object
 }
 
 context(generator: CoreDataGenerator, propertyNames: MessagePropertyNames)
