@@ -2,7 +2,7 @@
 # libraries
 kotlin = "2.4.20"
 http4k = "6.61.0.0"
-sollecitom-gradle-plugins = "1.0.39"
+sollecitom-gradle-plugins = "1.0.40"
 sollecitom-swissknife = "1.0.58"
 sollecitom-pillar = "1.0.34"
 sollecitom-acme-schema-catalogue = "1.0.12"
