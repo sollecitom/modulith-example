@@ -11,6 +11,8 @@ import sollecitom.libs.pillar.service.logging.logServiceStopped
 import sollecitom.libs.pillar.web.api.utils.api.EndpointHttpDrivingAdapter
 import sollecitom.libs.pillar.web.api.utils.api.create
 import sollecitom.libs.swissknife.configuration.utils.configurationPropertiesUnderRoot
+import sollecitom.libs.swissknife.core.domain.lifecycle.closeReportingFailure
+import sollecitom.libs.swissknife.core.domain.lifecycle.stopReportingFailure
 import sollecitom.libs.swissknife.pulsar.utils.PulsarClientSettings
 import sollecitom.libs.swissknife.core.domain.text.Name
 import sollecitom.libs.swissknife.core.utils.CoreDataGenerator
@@ -75,14 +77,14 @@ class Service(private val environment: Environment, coreDataGenerators: CoreData
     override suspend fun stop() {
 
         logger.info { "${instanceInfo.name.value} instance with ID ${instanceInfo.instanceId.stringValue} is shutting down" }
-        mainHttpDrivingAdapter.stop()
-        modules.sortedBy { it.name.value }.forEach { module ->
-            module.stop()
-            logger.info { "Stopped module '${module.name.value}'" }
+        try {
+            stopReportingFailure("the main HTTP driving adapter") { mainHttpDrivingAdapter.stop() }
+            modules.sortedByDescending { it.name.value }.forEach { module -> stopReportingFailure("module '${module.name.value}'") { module.stop() } }
+            stopReportingFailure("the health HTTP driving adapter") { healthHttpDrivingAdapter.stop() }
+        } finally {
+            closeReportingFailure("Pulsar client") { pulsarClient.value.close() }
+            closeReportingFailure("meter registry") { meterRegistry.close() }
         }
-        healthHttpDrivingAdapter.stop()
-        pulsarClient.value.close()
-        meterRegistry.close()
         logServiceStopped()
     }
 
