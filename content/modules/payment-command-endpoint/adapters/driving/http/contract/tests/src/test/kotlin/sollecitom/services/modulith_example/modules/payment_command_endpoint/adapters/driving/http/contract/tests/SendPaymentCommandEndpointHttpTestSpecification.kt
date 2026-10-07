@@ -11,7 +11,6 @@ import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineStart.UNDISPATCHED
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
 import org.http4k.core.Method
 import org.http4k.core.Request
 import org.http4k.core.Status
@@ -49,7 +48,6 @@ import sollecitom.services.modulith_example.modules.payment_command_endpoint.dom
 import sollecitom.services.modulith_example.modules.payment_command_endpoint.domain.model.PaymentProcessingResult.Rejected.NonexistentAccount
 import sollecitom.services.modulith_example.shared.account.domain.model.event.SendPaymentCommand
 import sollecitom.services.modulith_example.shared.account.domain.test.utils.create
-import kotlin.time.Duration.Companion.seconds
 
 interface SendPaymentCommandEndpointHttpTestSpecification : ErrorsEndpointHttpTestSpecification, CommandEndpointHttpTestSpecification {
 
@@ -95,16 +93,18 @@ interface SendPaymentCommandEndpointHttpTestSpecification : ErrorsEndpointHttpTe
         val command = SendPaymentCommand.create()
         var receivedCommand: SendPaymentCommand? = null
         val delayedProcessingResult = CompletableDeferred<PaymentProcessingResult>()
+        val applicationInvoked = CompletableDeferred<Unit>()
         val outcome = setOf(ProcessedSuccessfully, NonexistentAccount(account = command.sourceAccount), InsufficientBalanceOnSourceAccount).random(random)
         val applicationResult = Successful(delayedProcessingResult)
         val api = api(meterRegistry) { args ->
             receivedCommand = SendPaymentCommand(args.sourceAccount, args.amount, args.targetAccount)
+            applicationInvoked.complete(Unit)
             applicationResult
         }
         val json = requestPayload(command = command)
         val invocationContext = InvocationContext.authenticated().withToggle(Toggles.InvocationVisibility, InvocationVisibility.HIGH)
         async(start = UNDISPATCHED) {
-            delay(1.seconds)
+            applicationInvoked.await()
             delayedProcessingResult.complete(outcome)
         }
         val request = Request(Method.POST, path(path)).body(json).withInvocationContext(invocationContext)
