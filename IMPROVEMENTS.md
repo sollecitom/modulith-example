@@ -31,6 +31,10 @@ Modular monolith template demonstrating event-driven architecture with a simplif
 2. Add saga/compensation patterns for failure handling
 3. Demonstrate horizontal scaling (partition strategy)
 4. Integrate OpenTelemetry for distributed tracing end-to-end
-5. Add dead-letter queue handling for failed messages
-6. Show event versioning and schema evolution
-7. Add performance/load testing examples
+5. Show event versioning and schema evolution
+6. Add performance/load testing examples
+7. Showcase idempotent ingestion end to end, together with the real payment processing (the always-success stub and the
+   fresh event id per request mean a retried payment is applied twice today): reuse the client's invocation id as the
+   idempotency key and keep a rotating table of seen events keyed by (`InvocationContext.idempotency` id, event type,
+   account), checked and recorded in the same transaction as the account update and pruned past a retention window,
+   so client retries, stale re-posts and replays are applied once
