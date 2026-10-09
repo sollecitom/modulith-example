@@ -1,11 +1,11 @@
 [versions]
 # libraries
-kotlin = "2.4.20"
+kotlin = "2.4.21"
 http4k = "6.61.0.0"
-sollecitom-gradle-plugins = "1.0.47"
-sollecitom-swissknife = "1.0.60"
-sollecitom-pillar = "1.0.37"
-sollecitom-acme-schema-catalogue = "1.0.12"
+sollecitom-gradle-plugins = "1.0.48"
+sollecitom-swissknife = "1.0.62"
+sollecitom-pillar = "1.0.38"
+sollecitom-acme-schema-catalogue = "1.0.13"
 # plugins
 palantir-git-plugin = "5.1.0"
 
