@@ -2,5 +2,11 @@
 # Format: one CVE ID per line; "#" starts a comment; an inline "# reason" is shown in the warning.
 # Re-check on every base-image rebuild and remove the entry once the CVE is no longer reported.
 
-# (none currently — CVE-2026-84782 removed 2026-10-03, and CVE-2026-45447 on 2026-07-02, both after the noble
-# base rebuilt with patched openssl)
+# Added 2026-11-05. Ubuntu fixed this in apt 2.8.4ubuntu0.1, but no eclipse-temurin noble tag has rebuilt against it
+# yet (25-jre-noble, 25-noble and 26-jre-noble all still ship apt 2.8.3), so there is no patched base image to move to.
+# Not exploitable here: the attack needs apt to fetch packages, and the service never runs apt — the image's
+# entrypoint is the JVM and nothing installs packages at runtime.
+CVE-2026-109518 # apt on-path attack during package fetch; the service never runs apt. Drop when the noble base rebuilds.
+
+# Previously accepted: CVE-2026-84782 removed 2026-10-03, and CVE-2026-45447 on 2026-07-02, both after the noble
+# base rebuilt with patched openssl
