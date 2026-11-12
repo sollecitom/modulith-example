@@ -22,9 +22,11 @@ import sollecitom.libs.swissknife.lens.core.extensions.networking.servicePort
 import sollecitom.libs.swissknife.logger.core.LoggingLevel
 import sollecitom.libs.swissknife.logging.standard.configuration.configureLogging
 import sollecitom.libs.swissknife.pulsar.test.utils.newPulsarContainer
+import sollecitom.libs.swissknife.web.api.test.utils.withResponseTimeout
 import sollecitom.services.modulith_example.configuration.ServiceProperties
 import sollecitom.services.modulith_example.service.starter.Service
 import sollecitom.services.modulith_example.service.test.specification.ServiceTestSpecification
+import kotlin.time.Duration.Companion.seconds
 
 @TestInstance(PER_CLASS)
 class InProcessServiceTests : ServiceTestSpecification, CoreDataGenerator by CoreDataGenerator.testProvider, CompanyConventions by Acme {
@@ -63,7 +65,7 @@ class InProcessServiceTests : ServiceTestSpecification, CoreDataGenerator by Cor
     )
     private val environment by lazy { Environment.from(httpServerProperties + pulsarProperties + serviceInstanceProperties) }
     override val service by lazy { Service(environment) }
-    override val httpClient = ApacheAsyncClient()
+    override val httpClient = ApacheAsyncClient.withResponseTimeout(20.seconds)
 
     @BeforeAll
     fun beforeAll() {

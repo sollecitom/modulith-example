@@ -19,6 +19,7 @@ import sollecitom.libs.swissknife.logging.standard.configuration.configureLoggin
 import sollecitom.libs.swissknife.pulsar.test.utils.newPulsarContainer
 import sollecitom.libs.swissknife.pulsar.test.utils.withNetworkAndAliases
 import sollecitom.libs.swissknife.web.api.test.utils.local.pod.LocalPodWithWebDrivingAdapter
+import sollecitom.libs.swissknife.web.api.test.utils.withResponseTimeout
 import sollecitom.services.modulith_example.service.test.specification.ServiceTestSpecification
 import kotlin.time.Duration.Companion.seconds
 
@@ -30,7 +31,7 @@ class ContainerizedServiceTests : ServiceTestSpecification, CoreDataGenerator by
 //    override val postgres: PostgresDockerContainer = PostgresDockerContainer().withNetworkAndAliases(network)
     override val pulsar: PulsarContainer = newPulsarContainer().withNetworkAndAliases(network)
     override val service by lazy { LocalPodWithWebDrivingAdapter.testContainers(size = 2) { newModulithExampleServiceContainer(pulsar).withNetwork(network) } }
-    override val httpClient = ApacheAsyncClient()
+    override val httpClient = ApacheAsyncClient.withResponseTimeout(20.seconds)
     override val timeout = 30.seconds
 
     init {
