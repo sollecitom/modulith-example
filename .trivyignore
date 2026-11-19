@@ -1,6 +1,3 @@
 # Accepted vulnerabilities — suppressed from FAILING the security scan, but still reported as a build WARNING.
-# Format: one CVE ID per line; "#" starts a comment; an inline "# reason" is shown in the warning.
-# Re-check on every base-image rebuild and remove the entry once the CVE is no longer reported.
-
-# (none currently — CVE-2026-109518 removed 2026-11-19 with the move to the jre (Ubuntu 26.04) base; CVE-2026-84782
-# on 2026-10-03 and CVE-2026-45447 on 2026-07-02, both after the noble base rebuilt with patched openssl)
+# Format: one entry per line, "CVE-ID # reason"; the reason is shown in the warning. Longer context goes in the commit.
+# update-workspace removes an entry once no image in this repo reports its CVE any more.
